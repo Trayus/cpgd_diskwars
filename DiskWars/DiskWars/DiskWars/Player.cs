@@ -29,6 +29,30 @@ namespace DiskWars
         public bool alive = true;
         public int score = 0;
 
+        public bool enabled = true;
+        public void enable()
+        {
+            animation.setVisible(true);
+            playerlight.setEnabled(true);
+            disk.animation.setVisible(true);
+            disk.disklight.setEnabled(true);
+            enabled = true;
+
+            animation.position = spawn;
+            velocity = Vector2.Zero;
+            alive = true;
+            disk.setPosition(animation.position);
+            holdingDisk = true;
+        }
+        public void disable()
+        {
+            animation.setVisible(false);
+            playerlight.setEnabled(false);
+            disk.animation.setVisible(false);
+            disk.disklight.setEnabled(false);
+            enabled = false;
+        }
+
         public Player(Vector2 spawn, int num)
         {
             this.num = num;
@@ -56,8 +80,8 @@ namespace DiskWars
                     playerlight = new Light(new Color(0.2f, 0.2f, 1f), animation.position, Constants.PLAYERLIGHTPOWER * 2, Constants.PLAYERLIGHTSIZE);
                     break;
             }
-            animation.setScale(1f);
-            disk.setScale(1f);
+            animation.setScale(Constants.PLAYERSCALE);
+            disk.setScale(Constants.PLAYERSCALE);
         }
 
         public void kill()

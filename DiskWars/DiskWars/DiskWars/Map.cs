@@ -50,13 +50,13 @@ namespace DiskWars
 
         private void parse(Texture2D map)
         {
-            Color[] data = new Color[48 * 27];
+            Color[] data = new Color[Constants.MAPX * Constants.MAPY];
             map.GetData<Color>(data);
-            for (int j = 0; j < 27; j++)
+            for (int j = 0; j < Constants.MAPY; j++)
             {
-                for (int i = 0; i < 48; i++)
+                for (int i = 0; i < Constants.MAPX; i++)
                 {
-                    Color temp = data[j * 48 + i];
+                    Color temp = data[j * Constants.MAPX + i];
 
                     if (temp.R == 100 && temp.G == 100 && temp.B == 100)
                     {
