@@ -7,14 +7,15 @@ namespace DiskWars
 {
     class Constants
     {
-        public static bool DEBUG = true;
+        public static bool DEBUG = false;
+        public static bool WRAP = false;
 
-        public static int MAPX = 60;
-        public static int MAPY = 34;
+        public static int MAPX = 62;
+        public static int MAPY = 35;
         public static float GAMESCALE = 1;
         public static float RESPAWN = 3000;
-        public static int TIMEMILLIS = 100000;
-        public static int TIMEINTRO = 1000;
+        public static int TIMEMILLIS = 150000;
+        public static int TIMEINTRO = 3000;
         public static int TIMEFADE = 3000;
         public static int TIMEREPLAY = 12000;
         public static int TILESIZE = 32;

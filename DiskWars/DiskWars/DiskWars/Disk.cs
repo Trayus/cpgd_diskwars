@@ -58,6 +58,17 @@ namespace DiskWars
             if (!player.holdingDisk)
             {
                 animation.position += velocity * gameTime * Constants.DISKVELOCITY;
+                if (Constants.WRAP)
+                {
+                    if (animation.position.X < 0)
+                        animation.position.X += 1920;
+                    if (animation.position.X > 1920)
+                        animation.position.X -= 1920;
+                    if (animation.position.Y < 0)
+                        animation.position.Y += 1080;
+                    if (animation.position.Y > 1080)
+                        animation.position.Y -= 1080;
+                }
             }
 
             disklight.position = animation.position;

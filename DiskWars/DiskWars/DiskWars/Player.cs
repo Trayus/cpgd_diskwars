@@ -123,6 +123,18 @@ namespace DiskWars
 
             if (alive)
             {
+                if (Constants.WRAP)
+                {
+                    if (animation.position.X < 0)
+                        animation.position.X += 1920;
+                    if (animation.position.X > 1920)
+                        animation.position.X -= 1920;
+                    if (animation.position.Y < 0)
+                        animation.position.Y += 1080;
+                    if (animation.position.Y > 1080)
+                        animation.position.Y -= 1080;
+                }
+
                 velocity.X += Input.LSTICKX(num) * gameTime * Constants.ACCELERATION;
                 if (Math.Abs(velocity.X) > Constants.MAXVELOCITY) velocity.X = Constants.MAXVELOCITY * Math.Sign(velocity.X);
                 velocity.Y -= Input.LSTICKY(num) * gameTime * Constants.ACCELERATION;

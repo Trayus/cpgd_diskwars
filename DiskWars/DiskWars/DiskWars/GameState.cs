@@ -38,6 +38,13 @@ namespace DiskWars
         public override void update(float gameTime)
         {
             updateTimer(gameTime);
+            checkEnabled();
+            if (Keyboard.GetState().IsKeyDown(Keys.F8))
+            {
+                Game1.goToState(State.MENU);
+                return;
+            }
+
             if (timer < -Constants.TIMEFADE)
             {
                 Game1.goToState(State.REPLAY);
@@ -45,8 +52,6 @@ namespace DiskWars
             else if (timer < Constants.TIMEMILLIS && timer > 0)
             {
                 // game logic 
-                checkEnabled();
-
                 for (int i = 0; i < 4; i++)
                 {
                     if (players[i].enabled)

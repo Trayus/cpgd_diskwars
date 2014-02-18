@@ -66,6 +66,10 @@ namespace DiskWars
                     {
                         tiles[i, j] = new Tile(TILE.wall, i * Constants.TILESIZE, j * Constants.TILESIZE);
                     }
+                    else if (temp.R == 250 && temp.G == 250 && temp.B == 250)
+                    {
+                        tiles[i, j] = new Tile(TILE.wall, i * Constants.TILESIZE, j * Constants.TILESIZE);
+                    }
                     else if (temp.R == 250 && temp.G == 0 && temp.B == 0)
                     {
                         spawns[0] = new Vector2(i * Constants.TILESIZE, j * Constants.TILESIZE);
