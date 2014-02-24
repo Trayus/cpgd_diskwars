@@ -52,6 +52,8 @@ namespace DiskWars
         {
             Color[] data = new Color[Constants.MAPX * Constants.MAPY];
             map.GetData<Color>(data);
+            List<Vector2> spawnList = new List<Vector2>();
+
             for (int j = 0; j < Constants.MAPY; j++)
             {
                 for (int i = 0; i < Constants.MAPX; i++)
@@ -90,6 +92,11 @@ namespace DiskWars
                         spawns[3] = new Vector2(i * Constants.TILESIZE, j * Constants.TILESIZE);
                         tiles[i, j] = new Tile(TILE.floor, i * Constants.TILESIZE, j * Constants.TILESIZE);
                     }
+                    else if (temp.R == 250 && temp.G == 0 && temp.B == 250)
+                    {
+                        spawnList.Add(new Vector2(i * Constants.TILESIZE, j * Constants.TILESIZE));
+                        tiles[i, j] = new Tile(TILE.floor, i * Constants.TILESIZE, j * Constants.TILESIZE);
+                    }
                     else if (temp.G == 0 && temp.B == 250)
                     {
                         tiles[i, j] = new Tile(TILE.floor, i * Constants.TILESIZE, j * Constants.TILESIZE);
@@ -105,9 +112,23 @@ namespace DiskWars
                     else
                     {
                         tiles[i, j] = new Tile(TILE.empty, i * Constants.TILESIZE, j * Constants.TILESIZE);
+                        //Console.Write(temp.R+" "+temp.G+" "+temp.B+"\n" );
                     }
                 }
             }
+
+            //Add the List spawnList to the array spawns.
+            Vector2[] tempSpawns = new Vector2[4 + spawnList.Count];
+            for (int k = 0; k < 4; k++)
+            {
+                tempSpawns[k] = spawns[k];
+            }
+
+            for (int l = 0; l < spawnList.Count; l++)
+            {
+                tempSpawns[l + 4] = spawnList.ElementAt(l);
+            }
+            spawns = tempSpawns;
         }
 
 
