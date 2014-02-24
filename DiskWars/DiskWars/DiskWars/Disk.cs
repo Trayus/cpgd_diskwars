@@ -22,7 +22,7 @@ namespace DiskWars
         public Vector2 velocity;
         Player player;
         public Light disklight;
-
+        public bool stopped = false;
 
         public Disk(Player p, String name, Vector2 position, Color light)
         {
@@ -78,6 +78,7 @@ namespace DiskWars
         {
             if (Vector2.Distance(animation.position, other.animation.position) < 2 * Constants.DISKRADIUS)
             {
+                if (!this.stopped)
                 {
                     Vector2 axis = animation.position - other.animation.position;
                     axis.Normalize();
@@ -89,6 +90,7 @@ namespace DiskWars
                     this.velocity.Normalize();
                     this.velocity *= speed;
                 }
+                if (!other.stopped)
                 {
                     Vector2 axis = other.animation.position - animation.position;
                     axis.Normalize();
@@ -107,9 +109,12 @@ namespace DiskWars
 
         public void retrieve(Vector2 to)
         {
-            Vector2 dir = to - animation.position;
-            dir.Normalize();
-            this.velocity = (this.velocity * 0.9f + dir * 0.1f);
+            if (!Constants.BOUNCETOSLOW || !stopped)
+            {
+                Vector2 dir = to - animation.position;
+                dir.Normalize();
+                this.velocity = (this.velocity * 0.9f + dir * 0.1f);
+            }
         }
 
         public void collisionDetectionVsMap(Map m)
@@ -127,41 +132,137 @@ namespace DiskWars
 
             if (ay >= 0 && ay < Constants.MAPY)
             {
-                if (ax >= 0 && ax < Constants.MAPX) aa = m.tiles[ax, ay].type == Map.TILE.wall;
-                if (bx >= 0 && bx < Constants.MAPX) ab = m.tiles[bx, ay].type == Map.TILE.wall;
-                if (cx >= 0 && cx < Constants.MAPX) ac = m.tiles[cx, ay].type == Map.TILE.wall;
+                if (ax >= 0 && ax < Constants.MAPX) aa = m.tiles[ax, ay].type == Map.TILE.wall && m.tiles[ax, ay].wall != Map.WALL.pass;
+                if (bx >= 0 && bx < Constants.MAPX) ab = m.tiles[bx, ay].type == Map.TILE.wall && m.tiles[bx, ay].wall != Map.WALL.pass;
+                if (cx >= 0 && cx < Constants.MAPX) ac = m.tiles[cx, ay].type == Map.TILE.wall && m.tiles[cx, ay].wall != Map.WALL.pass;
             }
             if (by >= 0 && by < Constants.MAPY)
             {
-                if (ax >= 0 && ax < Constants.MAPX) ba = m.tiles[ax, by].type == Map.TILE.wall;
-                if (cx >= 0 && cx < Constants.MAPX) bc = m.tiles[cx, by].type == Map.TILE.wall;
+                if (ax >= 0 && ax < Constants.MAPX) ba = m.tiles[ax, by].type == Map.TILE.wall && m.tiles[ax, by].wall != Map.WALL.pass;
+                if (cx >= 0 && cx < Constants.MAPX) bc = m.tiles[cx, by].type == Map.TILE.wall && m.tiles[cx, by].wall != Map.WALL.pass;
             }
             if (cy >= 0 && cy < Constants.MAPY)
             {
-                if (ax >= 0 && ax < Constants.MAPX) ca = m.tiles[ax, cy].type == Map.TILE.wall;
-                if (bx >= 0 && bx < Constants.MAPX) cb = m.tiles[bx, cy].type == Map.TILE.wall;
-                if (cx >= 0 && cx < Constants.MAPX) cc = m.tiles[cx, cy].type == Map.TILE.wall;
+                if (ax >= 0 && ax < Constants.MAPX) ca = m.tiles[ax, cy].type == Map.TILE.wall && m.tiles[ax, cy].wall != Map.WALL.pass;
+                if (bx >= 0 && bx < Constants.MAPX) cb = m.tiles[bx, cy].type == Map.TILE.wall && m.tiles[bx, cy].wall != Map.WALL.pass;
+                if (cx >= 0 && cx < Constants.MAPX) cc = m.tiles[cx, cy].type == Map.TILE.wall && m.tiles[cx, cy].wall != Map.WALL.pass;
             }
 
             if ((aa && ac) || ab)
             {
                 animation.position.Y = ((ay + 1) * Constants.TILESIZE - Constants.TILESIZE / 2) + Constants.DISKRADIUS;
-                velocity.Y = -velocity.Y;
+                if (m.tiles[bx, ay].wall == Map.WALL.bounce)
+                {
+                    if (!Constants.BOUNCETOSLOW)
+                    {
+                        velocity.Y = -velocity.Y * (Rand.Float() + 0.5f);
+                        velocity.X = (Rand.Float() - 0.5f) * 3;
+                    }
+                    else
+                    {
+                        velocity.Y = 0;
+                        velocity.X = 0;
+                        stopped = true;
+                    }
+                }
+                else
+                    velocity.Y = -velocity.Y;
+
+                if (m.tiles[bx, ay].wall == Map.WALL.destr)
+                {
+                    m.tiles[bx, ay].type = Map.TILE.floor;
+                    m.tiles[bx, ay].anim.removeFromRenderingEngine();
+                    m.tiles[bx, ay].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[bx, ay].anim.position.X, m.tiles[bx, ay].anim.position.Y), 0.1f);
+                    m.tiles[bx, ay].respawn = Constants.DESTR_RESPAWN;
+                }
             }
             if ((ca && cc) || cb)
             {
                 animation.position.Y = (cy * Constants.TILESIZE - Constants.TILESIZE / 2) - Constants.DISKRADIUS;
-                velocity.Y = -velocity.Y;
+                if (m.tiles[bx, cy].wall == Map.WALL.bounce)
+                {
+                    if (!Constants.BOUNCETOSLOW)
+                    {
+                        velocity.Y = -velocity.Y * (Rand.Float() + 0.5f);
+                        velocity.X = (Rand.Float() - 0.5f) * 3;
+                    }
+                    else
+                    {
+                        velocity.Y = 0;
+                        velocity.X = 0;
+                        stopped = true;
+                    }
+                }
+                else
+                    velocity.Y = -velocity.Y;
+
+                if (m.tiles[bx, cy].wall == Map.WALL.destr)
+                {
+                    m.tiles[bx, cy].type = Map.TILE.floor;
+                    m.tiles[bx, cy].anim.removeFromRenderingEngine();
+                    m.tiles[bx, cy].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[bx, cy].anim.position.X, m.tiles[bx, cy].anim.position.Y), 0.1f);
+                    m.tiles[bx, cy].respawn = Constants.DESTR_RESPAWN;
+                }
             }
             if ((aa && ca) || ba)
             {
                 animation.position.X = ((ax + 1) * Constants.TILESIZE - Constants.TILESIZE / 2) + Constants.DISKRADIUS;
-                velocity.X = -velocity.X;
+                if (m.tiles[ax, by].wall == Map.WALL.bounce)
+                {
+                    if (!Constants.BOUNCETOSLOW)
+                    {
+                        velocity.X = -velocity.X * (Rand.Float() + 0.5f);
+                        velocity.Y = (Rand.Float() - 0.5f) * 3;
+                    }
+                    else
+                    {
+                        velocity.Y = 0;
+                        velocity.X = 0;
+                        stopped = true;
+                    }
+                }
+                else
+                    velocity.X = -velocity.X;
+
+                if (m.tiles[ax, by].wall == Map.WALL.destr)
+                {
+                    m.tiles[ax, by].type = Map.TILE.floor;
+                    m.tiles[ax, by].anim.removeFromRenderingEngine();
+                    m.tiles[ax, by].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[ax, by].anim.position.X, m.tiles[ax, by].anim.position.Y), 0.1f);
+                    m.tiles[ax, by].respawn = Constants.DESTR_RESPAWN;
+                }
             }
             if ((ac && cc) || bc)
             {
                 animation.position.X = (cx * Constants.TILESIZE - Constants.TILESIZE / 2) - Constants.DISKRADIUS;
-                velocity.X = -velocity.X;
+                if (m.tiles[cx, by].wall == Map.WALL.bounce)
+                {
+                    if (!Constants.BOUNCETOSLOW)
+                    {
+                        velocity.X = -velocity.X * (Rand.Float() + 0.5f);
+                        velocity.Y = (Rand.Float() - 0.5f) * 3;
+                    }
+                    else
+                    {
+                        velocity.Y = 0;
+                        velocity.X = 0;
+                        stopped = true;
+                    }
+                }
+                else
+                    velocity.X = -velocity.X;
+
+                if (m.tiles[cx, by].wall == Map.WALL.destr)
+                {
+                    m.tiles[cx, by].type = Map.TILE.floor;
+                    m.tiles[cx, by].anim.removeFromRenderingEngine();
+                    m.tiles[cx, by].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[cx, by].anim.position.X, m.tiles[cx, by].anim.position.Y), 0.1f);
+                    m.tiles[cx, by].respawn = Constants.DESTR_RESPAWN;
+                }
             }
         }
     }

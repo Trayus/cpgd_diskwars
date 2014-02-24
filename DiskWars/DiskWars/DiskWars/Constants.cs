@@ -7,8 +7,9 @@ namespace DiskWars
 {
     class Constants
     {
-        public static bool DEBUG = false;
+        public static bool DEBUG = true;
         public static bool WRAP = false;
+        public static bool BOUNCETOSLOW = true;
 
         public static int MAPX = 62;
         public static int MAPY = 35;
@@ -34,6 +35,7 @@ namespace DiskWars
         public static int SCOREPERDEATH = -1;
         public static float MINDISKTIME = 100;
         public static float PLAYERSCALE = 0.8f;
-        public static String[] mapnames = { "placeholder", "testmap"};
+        public static float DESTR_RESPAWN = 5000f;
+        public static String[] mapnames = { "placeholder", "testmap", "WallWorld"};
     }
 }

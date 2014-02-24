@@ -19,11 +19,14 @@ namespace DiskWars
     {
         public enum TILE { empty, floor, wall, spawnfloor, upgradefloor };
         public enum POWER { stealth, spike, speed, repel, none };
+        public enum WALL { bounce, destr, pass, none };
         public class Tile
         {
             public TILE type;
             public Animation anim;
             public POWER power = POWER.none;
+            public WALL wall = WALL.none;
+            public float respawn = 0;
             public Tile(TILE type, float x, float y)
             {
                 this.type = type;
@@ -35,6 +38,27 @@ namespace DiskWars
                         break;
                     case TILE.wall:
                         anim = Animation.createSingleFrameAnimation("tiles/testset_wall", new Vector2(x, y), 0.1f);
+                        break;
+                }
+            }
+            public Tile(TILE type, float x, float y, WALL wall)
+            {
+                this.type = type;
+                this.wall = wall;
+
+                switch (type)
+                {
+                    case TILE.floor:
+                        anim = Animation.createSingleFrameAnimation("tiles/testset_floor", new Vector2(x, y), 0.1f);
+                        break;
+                    case TILE.wall:
+                        switch (wall)
+                        {
+                            case WALL.bounce: anim = Animation.createSingleFrameAnimation("tiles/testset_bounce", new Vector2(x, y), 0.1f); break;
+                            case WALL.destr: anim = Animation.createSingleFrameAnimation("tiles/testset_destructible1", new Vector2(x, y), 0.1f); break;
+                            case WALL.pass: anim = Animation.createSingleFrameAnimation("tiles/testset_passthrough", new Vector2(x, y), 0.1f); break;
+                            default: anim = Animation.createSingleFrameAnimation("tiles/testset_wall", new Vector2(x, y), 0.1f); break;
+                        }
                         break;
                 }
             }
@@ -101,6 +125,15 @@ namespace DiskWars
                             tiles[i, j].power = POWER.spike;
                         if (temp.R == 250)
                             tiles[i, j].power = POWER.repel;
+                    }
+                    else if (temp.G == 250 && temp.B == 250)
+                    {
+                        if (temp.R == 100)
+                            tiles[i, j] = new Tile(TILE.wall, i * Constants.TILESIZE, j * Constants.TILESIZE, WALL.pass);
+                        if (temp.R == 150)
+                            tiles[i, j] = new Tile(TILE.wall, i * Constants.TILESIZE, j * Constants.TILESIZE, WALL.bounce);
+                        if (temp.R == 200)
+                            tiles[i, j] = new Tile(TILE.wall, i * Constants.TILESIZE, j * Constants.TILESIZE, WALL.destr);
                     }
                     else
                     {

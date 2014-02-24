@@ -78,6 +78,25 @@ namespace DiskWars
                         scores[i].setText(players[i].score + " ");
                     }
                 }
+                // check for respawning destructible tiles
+                for (int i = 0; i < Constants.MAPX; i++)
+                {
+                    for (int j = 0; j < Constants.MAPY; j++)
+                    {
+                        if (map.tiles[i, j].wall == Map.WALL.destr && map.tiles[i, j].respawn > 0)
+                        {
+                            map.tiles[i, j].respawn -= gameTime;
+                            if (map.tiles[i, j].respawn <= 0)
+                            {
+                                map.tiles[i, j].respawn = 0;
+                                map.tiles[i, j].type = Map.TILE.wall;
+                                map.tiles[i, j].anim.removeFromRenderingEngine();
+                                map.tiles[i, j].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible1",
+                                    new Vector2(map.tiles[i, j].anim.position.X, map.tiles[i, j].anim.position.Y), 0.1f);
+                            }
+                        }
+                    }
+                }
             }
         }
 

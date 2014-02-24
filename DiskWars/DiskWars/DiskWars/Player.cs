@@ -118,6 +118,7 @@ namespace DiskWars
                 disk.animation.setVisible(true);
                 disk.disklight.setEnabled(true);
                 disk.setPosition(animation.position);
+                disk.stopped = false;
                 holdingDisk = true;
             }
 
@@ -159,10 +160,11 @@ namespace DiskWars
 
                 if (diskTimer > 0)
                     diskTimer -= gameTime;
-                if (!holdingDisk && diskTimer <= 0 && (Vector2.Distance(disk.getPosition(), animation.position) < Constants.PLAYERRADIUS))
+                if (!holdingDisk && diskTimer <= 0 && (Vector2.Distance(disk.getPosition(), animation.position) < Constants.PLAYERRADIUS + (disk.stopped? Constants.DISKRADIUS : 0)))
                 {
                     holdingDisk = true;
                     disk.setVelocity(Vector2.Zero);
+                    disk.stopped = false;
                 }
                 if (holdingDisk && !reset && (Input.RT(num) < 0.2f && Input.LT(num) < 0.2f))
                     reset = true;
