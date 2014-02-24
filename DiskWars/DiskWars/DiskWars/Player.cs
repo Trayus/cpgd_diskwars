@@ -20,7 +20,7 @@ namespace DiskWars
         Animation animation;
         public Disk disk;
         Vector2 velocity = Vector2.Zero;
-        Vector2 spawn;
+        Vector2[] spawn;
         Light playerlight;
         int num;
         public bool holdingDisk = true, released = false, reset = false;
@@ -28,6 +28,7 @@ namespace DiskWars
         float respawnTimer;
         public bool alive = true;
         public int score = 0;
+        Random random;
 
         public bool enabled = true;
         public void enable()
@@ -38,7 +39,7 @@ namespace DiskWars
             disk.disklight.setEnabled(true);
             enabled = true;
 
-            animation.position = spawn;
+            animation.position = getRandomSpawn();
             velocity = Vector2.Zero;
             alive = true;
             disk.setPosition(animation.position);
@@ -53,35 +54,36 @@ namespace DiskWars
             enabled = false;
         }
 
-        public Player(Vector2 spawn, int num)
+        public Player(Vector2[] spawn, int num)
         {
             this.num = num;
             this.spawn = spawn;
             switch (num)
             {
                 case 1:
-                    animation = Animation.createSingleFrameAnimation("player/redplayer", spawn, 1.0f);
-                    disk = new Disk(this, "player/reddisk", spawn + new Vector2(0, 20), new Color(0.8f, 0.1f, 0.1f));
+                    animation = Animation.createSingleFrameAnimation("player/redplayer", spawn[num-1], 1.0f);
+                    disk = new Disk(this, "player/reddisk", spawn[num - 1] + new Vector2(0, 20), new Color(0.8f, 0.1f, 0.1f));
                     playerlight = new Light(new Color(1f, 0.2f, 0.2f), animation.position, Constants.PLAYERLIGHTPOWER * 2, Constants.PLAYERLIGHTSIZE);
                     break;
                 case 2:
-                    animation = Animation.createSingleFrameAnimation("player/yellowplayer", spawn, 1.0f);
-                    disk = new Disk(this, "player/yellowdisk", spawn + new Vector2(0, 20), new Color(0.8f, 0.8f, 0.1f));
+                    animation = Animation.createSingleFrameAnimation("player/yellowplayer", spawn[num - 1], 1.0f);
+                    disk = new Disk(this, "player/yellowdisk", spawn[num - 1] + new Vector2(0, 20), new Color(0.8f, 0.8f, 0.1f));
                     playerlight = new Light(new Color(1f, 1f, 0.2f), animation.position, Constants.PLAYERLIGHTPOWER, Constants.PLAYERLIGHTSIZE);
                     break;
                 case 3:
-                    animation = Animation.createSingleFrameAnimation("player/greenplayer", spawn, 1.0f);
-                    disk = new Disk(this, "player/greendisk", spawn + new Vector2(0, 20), new Color(0.1f, 0.8f, 0.1f));
+                    animation = Animation.createSingleFrameAnimation("player/greenplayer", spawn[num - 1], 1.0f);
+                    disk = new Disk(this, "player/greendisk", spawn[num - 1] + new Vector2(0, 20), new Color(0.1f, 0.8f, 0.1f));
                     playerlight = new Light(new Color(0.2f, 1f, 0.2f), animation.position, Constants.PLAYERLIGHTPOWER, Constants.PLAYERLIGHTSIZE);
                     break;
                 case 4:
-                    animation = Animation.createSingleFrameAnimation("player/blueplayer", spawn, 1.0f);
-                    disk = new Disk(this, "player/bluedisk", spawn + new Vector2(0, 20), new Color(0.1f, 0.1f, 0.8f));
+                    animation = Animation.createSingleFrameAnimation("player/blueplayer", spawn[num - 1], 1.0f);
+                    disk = new Disk(this, "player/bluedisk", spawn[num - 1] + new Vector2(0, 20), new Color(0.1f, 0.1f, 0.8f));
                     playerlight = new Light(new Color(0.2f, 0.2f, 1f), animation.position, Constants.PLAYERLIGHTPOWER * 2, Constants.PLAYERLIGHTSIZE);
                     break;
             }
             animation.setScale(Constants.PLAYERSCALE);
             disk.setScale(Constants.PLAYERSCALE);
+            random = new Random(num);
         }
 
         public void kill()
@@ -111,7 +113,7 @@ namespace DiskWars
 
             if (!alive && respawnTimer <= 0)
             {
-                animation.position = spawn;
+                animation.position = getRandomSpawn();
                 velocity = Vector2.Zero;
                 alive = true;
                 animation.setVisible(true);
@@ -249,6 +251,13 @@ namespace DiskWars
                 animation.position.X = (cx * Constants.TILESIZE - Constants.TILESIZE / 2) - Constants.PLAYERRADIUS;
                 velocity.X = 0;
             }
+        }
+
+        public Vector2 getRandomSpawn()
+        {
+            int randomNumber = random.Next(0, spawn.Length);
+            Console.Write(spawn.Length);
+            return spawn[randomNumber];
         }
     }
 }

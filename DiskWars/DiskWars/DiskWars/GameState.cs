@@ -208,7 +208,7 @@ namespace DiskWars
             toggles = new bool[4];
             for (int i = 0; i < 4; i++)
             {
-                players[i] = new Player(map.spawns[i], i + 1);
+                players[i] = new Player(map.spawns, i + 1);
                 scores[i] = new HUDText("0", new Vector2(500 + i * 100, 20), customfont, (i == 0 ? Color.Red : (i == 1 ? Color.Yellow : (i == 2 ? Color.LightGreen : Color.Blue))));
                 RenderingEngine.UI.addText(scores[i]);
                 toggles[i] = false;
