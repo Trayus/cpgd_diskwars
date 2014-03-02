@@ -97,6 +97,32 @@ namespace DiskWars
                         }
                     }
                 }
+
+                for (int i = 0; i < map.powerUps.Count; i++)
+                {
+                    for (int j = 0; j < players.Length; j++)
+                    {
+                        if (map.powerUps[i].animation.checkHit(players[j].animation))
+                        {
+                            players[j].powerUps.Add(map.powerUps[i]);
+                            map.powerUps[i].animation.setVisible(false);
+                            map.powerUps.Remove(map.powerUps[i]);
+                        }
+                    }
+                }
+
+                for (int j = 0; j < players.Length; j++)
+                {
+                    for (int i = 0; i < players[j].powerUps.Count; i++)
+                    {
+                        if (players[j].powerUps[i].activeTime < 0)
+                        {
+                            map.powerUps.Add(players[j].powerUps[i]);
+                            players[j].powerUps[i].animation.setVisible(true);
+                            players[j].powerUps.Remove(players[j].powerUps[i]);
+                        }
+                    }
+                }
             }
         }
 

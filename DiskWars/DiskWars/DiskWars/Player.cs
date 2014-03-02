@@ -17,7 +17,7 @@ namespace DiskWars
 {
     class Player
     {
-        Animation animation;
+        public Animation animation;
         public Disk disk;
         Vector2 velocity = Vector2.Zero;
         Vector2[] spawn;
@@ -29,6 +29,7 @@ namespace DiskWars
         public bool alive = true;
         public int score = 0;
         Random random;
+        public List<PowerUp> powerUps;
 
         public bool enabled = true;
         public void enable()
@@ -83,6 +84,7 @@ namespace DiskWars
             }
             animation.setScale(Constants.PLAYERSCALE);
             disk.setScale(Constants.PLAYERSCALE);
+            powerUps = new List<PowerUp>();
             random = new Random(num);
         }
 
@@ -105,6 +107,17 @@ namespace DiskWars
             }
             return false;
         }
+
+        public bool pUCheck(PowerUp PU)
+        {
+            if (Vector2.Distance(animation.position, PU.animation.position) < Constants.DISKRADIUS + Constants.PLAYERRADIUS)
+            {
+                kill();
+                return true;
+            }
+            return false;
+        }
+        
         
         public void update(float gameTime)
         {
@@ -188,6 +201,19 @@ namespace DiskWars
                     disk.setPosition(animation.position + new Vector2((float)Math.Cos(animation.getRotation() + (float)Math.PI / 2),
                                                                      (float)Math.Sin(animation.getRotation() + (float)Math.PI / 2)) * 20);
                     disk.setRotation(animation.getRotation());
+                }
+            }
+            
+            //for each power up, if timer < 0 move power up back to map, else decrement the timer.
+            foreach (PowerUp PU in powerUps)
+            {
+                if (PU.activeTime >= 0)
+                {
+                    PU.activeTime--;
+                }
+                else
+                {
+                    PU.reset();
                 }
             }
         }

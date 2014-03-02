@@ -22,8 +22,10 @@ namespace DiskWars
         public static int TILESIZE = 32;
         public static int PLAYERLIGHTSIZE = 80;
         public static int DISKLIGHTSIZE = 120;
+        public static int POWERUPLIGHTSIZE = 50;
         public static float PLAYERLIGHTPOWER = 0.2f;
         public static float DISKLIGHTPOWER = 0.3f;
+        public static float POWERUPLIGHTPOWER = 0.2f;
         public static float VELOCITY = 0.25f;
         public static float DISKVELOCITY = 0.9f;
         public static float MAXVELOCITY = 3.0f;
@@ -35,7 +37,9 @@ namespace DiskWars
         public static int SCOREPERDEATH = -1;
         public static float MINDISKTIME = 100;
         public static float PLAYERSCALE = 0.8f;
+        public static float POWERUPSCALE = 0.5f;
         public static float DESTR_RESPAWN = 5000f;
+        public static float POWER_UP_TIMER = 1000f;
         public static String[] mapnames = { "placeholder", "testmap", "WallWorld"};
     }
 }
