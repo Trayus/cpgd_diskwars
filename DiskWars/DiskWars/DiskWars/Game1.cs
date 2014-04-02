@@ -36,7 +36,7 @@ namespace DiskWars
                 graphics.PreferredBackBufferWidth = 1366;
                 graphics.PreferredBackBufferHeight = 768;
                 graphics.IsFullScreen = false;
-            }
+            } 
             else
             {
                 graphics.PreferredBackBufferWidth = 1920;
