@@ -45,6 +45,5 @@ namespace DiskWars
         public static String[] mapnames = { "Arena", "Breakout", "placeholder", "WallWorld" };
         public static float POWERUPTIMER = 300.0f;
         public static float POWERUPRESPAWN = 300.0f;
-        public static String[] mapnames = { "placeholder", "testmap", "WallWorld"};
     }
 }
