@@ -28,18 +28,22 @@ namespace DiskWars
         public static float POWERUPLIGHTPOWER = 0.2f;
         public static float VELOCITY = 0.25f;
         public static float DISKVELOCITY = 0.9f;
+        public static float DISKVELOCITYPU = 1.8f;
         public static float MAXVELOCITY = 3.0f;
         public static float ACCELERATION = 0.03f;
         public static float SLIDE = 1.2f;
         public static int PLAYERRADIUS = 24;
         public static int DISKRADIUS = 18;
+        public static int DISKRADIUSPU = 27;
         public static int SCOREPERKILL = 3;
         public static int SCOREPERDEATH = -1;
         public static float MINDISKTIME = 100;
         public static float PLAYERSCALE = 0.8f;
         public static float POWERUPSCALE = 0.5f;
+        public static float POWERUPSIZESCALE = 1.5f;
         public static float DESTR_RESPAWN = 5000f;
-        public static float POWER_UP_TIMER = 1000f;
+        public static float POWERUPTIMER = 300.0f;
+        public static float POWERUPRESPAWN = 300.0f;
         public static String[] mapnames = { "placeholder", "testmap", "WallWorld"};
     }
 }

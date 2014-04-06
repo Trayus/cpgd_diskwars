@@ -23,12 +23,18 @@ namespace DiskWars
         Player player;
         public Light disklight;
         public bool stopped = false;
+        public float diskVelocity;
+        public int diskRadius;
+        public bool diskPierce;
 
         public Disk(Player p, String name, Vector2 position, Color light)
         {
             player = p;
-            animation = Animation.createSingleFrameAnimation(name, position, 0.9f);
+            animation = Animation.createSingleFrameAnimation(name, position, 0.85f);
             disklight = new Light(light, animation.position, Constants.DISKLIGHTPOWER * 2, Constants.DISKLIGHTSIZE);
+            diskVelocity = Constants.DISKVELOCITY;
+            diskRadius = Constants.DISKRADIUS;
+            diskPierce = false;
         }
 
         public void setScale(float scale)
@@ -57,7 +63,7 @@ namespace DiskWars
         {
             if (!player.holdingDisk)
             {
-                animation.position += velocity * gameTime * Constants.DISKVELOCITY;
+                animation.position += velocity * gameTime * diskVelocity;
                 if (Constants.WRAP)
                 {
                     if (animation.position.X < 0)
@@ -76,9 +82,9 @@ namespace DiskWars
 
         public bool collide(Disk other)
         {
-            if (Vector2.Distance(animation.position, other.animation.position) < 2 * Constants.DISKRADIUS)
+            if (Vector2.Distance(animation.position, other.animation.position) < 2 * diskRadius)
             {
-                if (!this.stopped)
+                if (!this.stopped && !diskPierce)
                 {
                     Vector2 axis = animation.position - other.animation.position;
                     axis.Normalize();
@@ -123,12 +129,12 @@ namespace DiskWars
                 return;
 
             bool aa = false, ab = false, ac = false, ba = false, bc = false, ca = false, cb = false, cc = false;
-            int ax = (int)((animation.position.X - Constants.DISKRADIUS + Constants.TILESIZE / 2) / Constants.TILESIZE),
-                ay = (int)((animation.position.Y - Constants.DISKRADIUS + Constants.TILESIZE / 2) / Constants.TILESIZE);
+            int ax = (int)((animation.position.X - diskRadius + Constants.TILESIZE / 2) / Constants.TILESIZE),
+                ay = (int)((animation.position.Y - diskRadius + Constants.TILESIZE / 2) / Constants.TILESIZE);
             int bx = (int)((animation.position.X + Constants.TILESIZE / 2) / Constants.TILESIZE),
                 by = (int)((animation.position.Y + Constants.TILESIZE / 2) / Constants.TILESIZE);
-            int cx = (int)((animation.position.X + Constants.DISKRADIUS + Constants.TILESIZE / 2) / Constants.TILESIZE),
-                cy = (int)((animation.position.Y + Constants.DISKRADIUS + Constants.TILESIZE / 2) / Constants.TILESIZE);
+            int cx = (int)((animation.position.X + diskRadius + Constants.TILESIZE / 2) / Constants.TILESIZE),
+                cy = (int)((animation.position.Y + diskRadius + Constants.TILESIZE / 2) / Constants.TILESIZE);
 
             if (ay >= 0 && ay < Constants.MAPY)
             {
@@ -150,7 +156,7 @@ namespace DiskWars
 
             if ((aa && ac) || ab)
             {
-                animation.position.Y = ((ay + 1) * Constants.TILESIZE - Constants.TILESIZE / 2) + Constants.DISKRADIUS;
+                animation.position.Y = ((ay + 1) * Constants.TILESIZE - Constants.TILESIZE / 2) + diskRadius;
                 if (m.tiles[bx, ay].wall == Map.WALL.bounce)
                 {
                     if (!Constants.BOUNCETOSLOW)
@@ -179,7 +185,7 @@ namespace DiskWars
             }
             if ((ca && cc) || cb)
             {
-                animation.position.Y = (cy * Constants.TILESIZE - Constants.TILESIZE / 2) - Constants.DISKRADIUS;
+                animation.position.Y = (cy * Constants.TILESIZE - Constants.TILESIZE / 2) - diskRadius;
                 if (m.tiles[bx, cy].wall == Map.WALL.bounce)
                 {
                     if (!Constants.BOUNCETOSLOW)
@@ -208,7 +214,7 @@ namespace DiskWars
             }
             if ((aa && ca) || ba)
             {
-                animation.position.X = ((ax + 1) * Constants.TILESIZE - Constants.TILESIZE / 2) + Constants.DISKRADIUS;
+                animation.position.X = ((ax + 1) * Constants.TILESIZE - Constants.TILESIZE / 2) + diskRadius;
                 if (m.tiles[ax, by].wall == Map.WALL.bounce)
                 {
                     if (!Constants.BOUNCETOSLOW)
@@ -237,7 +243,7 @@ namespace DiskWars
             }
             if ((ac && cc) || bc)
             {
-                animation.position.X = (cx * Constants.TILESIZE - Constants.TILESIZE / 2) - Constants.DISKRADIUS;
+                animation.position.X = (cx * Constants.TILESIZE - Constants.TILESIZE / 2) - diskRadius;
                 if (m.tiles[cx, by].wall == Map.WALL.bounce)
                 {
                     if (!Constants.BOUNCETOSLOW)

@@ -98,6 +98,7 @@ namespace DiskWars
                     }
                 }
 
+                //POWERUPS
                 for (int i = 0; i < map.powerUps.Count; i++)
                 {
                     for (int j = 0; j < players.Length; j++)
@@ -106,7 +107,8 @@ namespace DiskWars
                         {
                             players[j].powerUps.Add(map.powerUps[i]);
                             map.powerUps[i].animation.setVisible(false);
-                            map.powerUps.Remove(map.powerUps[i]);
+                            map.powerUps.Remove(map.powerUps[i--]);
+                            break;
                         }
                     }
                 }
@@ -117,9 +119,15 @@ namespace DiskWars
                     {
                         if (players[j].powerUps[i].activeTime < 0)
                         {
-                            map.powerUps.Add(players[j].powerUps[i]);
-                            players[j].powerUps[i].animation.setVisible(true);
-                            players[j].powerUps.Remove(players[j].powerUps[i]);
+                            players[j].powerUps[i].respawnTimer--;
+                            if (players[j].powerUps[i].respawnTimer < 0)
+                            {
+                                players[j].powerUps[i].activeTime = Constants.POWERUPTIMER;
+                                players[j].powerUps[i].respawnTimer = Constants.POWERUPRESPAWN;
+                                map.powerUps.Add(players[j].powerUps[i]);
+                                players[j].powerUps[i].animation.setVisible(true);
+                                players[j].powerUps.Remove(players[j].powerUps[i]);
+                            }
                         }
                     }
                 }
