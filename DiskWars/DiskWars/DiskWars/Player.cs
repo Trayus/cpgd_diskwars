@@ -17,7 +17,7 @@ namespace DiskWars
 {
     class Player
     {
-        Animation animation;
+        public Animation animation;
         public Disk disk;
         Vector2 velocity = Vector2.Zero;
         Vector2[] spawn;
@@ -28,7 +28,8 @@ namespace DiskWars
         float respawnTimer;
         public bool alive = true;
         public int score = 0;
-        Random random;
+
+        GameState gameState;
 
         public bool enabled = true;
         public void enable()
@@ -39,7 +40,7 @@ namespace DiskWars
             disk.disklight.setEnabled(true);
             enabled = true;
 
-            animation.position = getRandomSpawn();
+            animation.position = gameState.getRandomSpawn();
             velocity = Vector2.Zero;
             alive = true;
             disk.setPosition(animation.position);
@@ -54,10 +55,11 @@ namespace DiskWars
             enabled = false;
         }
 
-        public Player(Vector2[] spawn, int num)
+        public Player(Vector2[] spawn, int num, GameState gameState)
         {
             this.num = num;
             this.spawn = spawn;
+            this.gameState = gameState;
             switch (num)
             {
                 case 1:
@@ -83,7 +85,6 @@ namespace DiskWars
             }
             animation.setScale(Constants.PLAYERSCALE);
             disk.setScale(Constants.PLAYERSCALE);
-            random = new Random(num);
         }
 
         public void kill()
@@ -113,7 +114,7 @@ namespace DiskWars
 
             if (!alive && respawnTimer <= 0)
             {
-                animation.position = getRandomSpawn();
+                animation.position = gameState.getRandomSpawn();
                 velocity = Vector2.Zero;
                 alive = true;
                 animation.setVisible(true);
@@ -253,11 +254,6 @@ namespace DiskWars
             }
         }
 
-        public Vector2 getRandomSpawn()
-        {
-            int randomNumber = random.Next(0, spawn.Length);
-            Console.Write(spawn.Length);
-            return spawn[randomNumber];
-        }
+
     }
 }
