@@ -210,6 +210,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="maps\Arena.png">
+      <Name>Arena</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="maps\Breakout.png">
+      <Name>Breakout</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="player\orangepowerup.png">
       <Name>orangepowerup</Name>
       <Importer>TextureImporter</Importer>

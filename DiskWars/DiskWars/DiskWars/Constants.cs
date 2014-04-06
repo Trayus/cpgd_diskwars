@@ -9,7 +9,7 @@ namespace DiskWars
     {
         public static bool DEBUG = true;
         public static bool WRAP = false;
-        public static bool BOUNCETOSLOW = true;
+        public static bool BOUNCETOSLOW = false;
 
         public static int MAPX = 62;
         public static int MAPY = 35;
@@ -42,6 +42,7 @@ namespace DiskWars
         public static float POWERUPSCALE = 0.5f;
         public static float POWERUPSIZESCALE = 1.5f;
         public static float DESTR_RESPAWN = 5000f;
+        public static String[] mapnames = { "Arena", "Breakout", "placeholder", "WallWorld" };
         public static float POWERUPTIMER = 300.0f;
         public static float POWERUPRESPAWN = 300.0f;
         public static String[] mapnames = { "placeholder", "testmap", "WallWorld"};

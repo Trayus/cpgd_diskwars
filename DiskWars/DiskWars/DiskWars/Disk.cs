@@ -161,8 +161,9 @@ namespace DiskWars
                 {
                     if (!Constants.BOUNCETOSLOW)
                     {
-                        velocity.Y = -velocity.Y * (Rand.Float() + 0.5f);
-                        velocity.X = (Rand.Float() - 0.5f) * 3;
+                        velocity.Y = 0;
+                        velocity.X = 0;
+                        player.released = true;
                     }
                     else
                     {
@@ -173,15 +174,6 @@ namespace DiskWars
                 }
                 else
                     velocity.Y = -velocity.Y;
-
-                if (m.tiles[bx, ay].wall == Map.WALL.destr)
-                {
-                    m.tiles[bx, ay].type = Map.TILE.floor;
-                    m.tiles[bx, ay].anim.removeFromRenderingEngine();
-                    m.tiles[bx, ay].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
-                        new Vector2(m.tiles[bx, ay].anim.position.X, m.tiles[bx, ay].anim.position.Y), 0.1f);
-                    m.tiles[bx, ay].respawn = Constants.DESTR_RESPAWN;
-                }
             }
             if ((ca && cc) || cb)
             {
@@ -190,8 +182,9 @@ namespace DiskWars
                 {
                     if (!Constants.BOUNCETOSLOW)
                     {
-                        velocity.Y = -velocity.Y * (Rand.Float() + 0.5f);
-                        velocity.X = (Rand.Float() - 0.5f) * 3;
+                        velocity.Y = 0;
+                        velocity.X = 0;
+                        player.released = true;
                     }
                     else
                     {
@@ -202,15 +195,6 @@ namespace DiskWars
                 }
                 else
                     velocity.Y = -velocity.Y;
-
-                if (m.tiles[bx, cy].wall == Map.WALL.destr)
-                {
-                    m.tiles[bx, cy].type = Map.TILE.floor;
-                    m.tiles[bx, cy].anim.removeFromRenderingEngine();
-                    m.tiles[bx, cy].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
-                        new Vector2(m.tiles[bx, cy].anim.position.X, m.tiles[bx, cy].anim.position.Y), 0.1f);
-                    m.tiles[bx, cy].respawn = Constants.DESTR_RESPAWN;
-                }
             }
             if ((aa && ca) || ba)
             {
@@ -219,8 +203,9 @@ namespace DiskWars
                 {
                     if (!Constants.BOUNCETOSLOW)
                     {
-                        velocity.X = -velocity.X * (Rand.Float() + 0.5f);
-                        velocity.Y = (Rand.Float() - 0.5f) * 3;
+                        velocity.Y = 0;
+                        velocity.X = 0;
+                        player.released = true;
                     }
                     else
                     {
@@ -231,15 +216,6 @@ namespace DiskWars
                 }
                 else
                     velocity.X = -velocity.X;
-
-                if (m.tiles[ax, by].wall == Map.WALL.destr)
-                {
-                    m.tiles[ax, by].type = Map.TILE.floor;
-                    m.tiles[ax, by].anim.removeFromRenderingEngine();
-                    m.tiles[ax, by].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
-                        new Vector2(m.tiles[ax, by].anim.position.X, m.tiles[ax, by].anim.position.Y), 0.1f);
-                    m.tiles[ax, by].respawn = Constants.DESTR_RESPAWN;
-                }
             }
             if ((ac && cc) || bc)
             {
@@ -248,8 +224,9 @@ namespace DiskWars
                 {
                     if (!Constants.BOUNCETOSLOW)
                     {
-                        velocity.X = -velocity.X * (Rand.Float() + 0.5f);
-                        velocity.Y = (Rand.Float() - 0.5f) * 3;
+                        velocity.Y = 0;
+                        velocity.X = 0;
+                        player.released = true;
                     }
                     else
                     {
@@ -260,14 +237,83 @@ namespace DiskWars
                 }
                 else
                     velocity.X = -velocity.X;
+            }
 
-                if (m.tiles[cx, by].wall == Map.WALL.destr)
+            if (ax >= 0 && ax < Constants.MAPX && ay >= 0 && ay < Constants.MAPY)
+            {
+                if (m.tiles[ax, ay].wall == Map.WALL.destr && m.tiles[ax, ay].respawn == 0)
+                {
+                    m.tiles[ax, ay].type = Map.TILE.floor;
+                    m.tiles[ax, ay].anim.removeFromRenderingEngine();
+                    m.tiles[ax, ay].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[ax, ay].anim.position.X, m.tiles[ax, ay].anim.position.Y), 0.1f);
+                    m.tiles[ax, ay].respawn = Constants.DESTR_RESPAWN;
+                }
+                if (m.tiles[ax, by].wall == Map.WALL.destr && m.tiles[ax, by].respawn == 0)
+                {
+                    m.tiles[ax, by].type = Map.TILE.floor;
+                    m.tiles[ax, by].anim.removeFromRenderingEngine();
+                    m.tiles[ax, by].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[ax, by].anim.position.X, m.tiles[ax, by].anim.position.Y), 0.1f);
+                    m.tiles[ax, by].respawn = Constants.DESTR_RESPAWN;
+                }
+                if (m.tiles[ax, cy].wall == Map.WALL.destr && m.tiles[ax, cy].respawn == 0)
+                {
+                    m.tiles[ax, cy].type = Map.TILE.floor;
+                    m.tiles[ax, cy].anim.removeFromRenderingEngine();
+                    m.tiles[ax, cy].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[ax, cy].anim.position.X, m.tiles[ax, cy].anim.position.Y), 0.1f);
+                    m.tiles[ax, cy].respawn = Constants.DESTR_RESPAWN;
+                }
+
+                if (m.tiles[bx, ay].wall == Map.WALL.destr && m.tiles[bx, ay].respawn == 0)
+                {
+                    m.tiles[bx, ay].type = Map.TILE.floor;
+                    m.tiles[bx, ay].anim.removeFromRenderingEngine();
+                    m.tiles[bx, ay].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[bx, ay].anim.position.X, m.tiles[bx, ay].anim.position.Y), 0.1f);
+                    m.tiles[bx, ay].respawn = Constants.DESTR_RESPAWN;
+                }
+                if (m.tiles[bx, by].wall == Map.WALL.destr && m.tiles[bx, by].respawn == 0)
+                {
+                    m.tiles[bx, by].type = Map.TILE.floor;
+                    m.tiles[bx, by].anim.removeFromRenderingEngine();
+                    m.tiles[bx, by].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[bx, by].anim.position.X, m.tiles[bx, by].anim.position.Y), 0.1f);
+                    m.tiles[bx, by].respawn = Constants.DESTR_RESPAWN;
+                }
+                if (m.tiles[bx, cy].wall == Map.WALL.destr && m.tiles[bx, cy].respawn == 0)
+                {
+                    m.tiles[bx, cy].type = Map.TILE.floor;
+                    m.tiles[bx, cy].anim.removeFromRenderingEngine();
+                    m.tiles[bx, cy].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[bx, cy].anim.position.X, m.tiles[bx, cy].anim.position.Y), 0.1f);
+                    m.tiles[bx, cy].respawn = Constants.DESTR_RESPAWN;
+                }
+
+                if (m.tiles[cx, ay].wall == Map.WALL.destr && m.tiles[cx, ay].respawn == 0)
+                {
+                    m.tiles[cx, ay].type = Map.TILE.floor;
+                    m.tiles[cx, ay].anim.removeFromRenderingEngine();
+                    m.tiles[cx, ay].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[cx, ay].anim.position.X, m.tiles[cx, ay].anim.position.Y), 0.1f);
+                    m.tiles[cx, ay].respawn = Constants.DESTR_RESPAWN;
+                }
+                if (m.tiles[cx, by].wall == Map.WALL.destr && m.tiles[cx, by].respawn == 0)
                 {
                     m.tiles[cx, by].type = Map.TILE.floor;
                     m.tiles[cx, by].anim.removeFromRenderingEngine();
                     m.tiles[cx, by].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
                         new Vector2(m.tiles[cx, by].anim.position.X, m.tiles[cx, by].anim.position.Y), 0.1f);
                     m.tiles[cx, by].respawn = Constants.DESTR_RESPAWN;
+                }
+                if (m.tiles[cx, cy].wall == Map.WALL.destr && m.tiles[cx, cy].respawn == 0)
+                {
+                    m.tiles[cx, cy].type = Map.TILE.floor;
+                    m.tiles[cx, cy].anim.removeFromRenderingEngine();
+                    m.tiles[cx, cy].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                        new Vector2(m.tiles[cx, cy].anim.position.X, m.tiles[cx, cy].anim.position.Y), 0.1f);
+                    m.tiles[cx, cy].respawn = Constants.DESTR_RESPAWN;
                 }
             }
         }
