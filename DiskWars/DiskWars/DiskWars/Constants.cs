@@ -39,7 +39,7 @@ namespace DiskWars
         public static int SCOREPERDEATH = -1;
         public static float MINDISKTIME = 100;
         public static float PLAYERSCALE = 0.8f;
-        public static float POWERUPSCALE = 0.5f;
+        public static float POWERUPSCALE = 1.5f;
         public static float POWERUPSIZESCALE = 1.5f;
         public static float DESTR_RESPAWN = 5000f;
         public static String[] mapnames = { "Arena", "Breakout", "placeholder", "WallWorld" };

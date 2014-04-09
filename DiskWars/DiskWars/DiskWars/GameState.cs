@@ -28,6 +28,7 @@ namespace DiskWars
         Player[] players;
         HUDText[] scores;
         bool[] toggles;
+        Vector2[] spawns;
 
         public GameState(ContentManager content)
         {
@@ -91,7 +92,7 @@ namespace DiskWars
                                 map.tiles[i, j].respawn = 0;
                                 map.tiles[i, j].type = Map.TILE.wall;
                                 map.tiles[i, j].anim.removeFromRenderingEngine();
-                                map.tiles[i, j].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible1",
+                                map.tiles[i, j].anim = Animation.createSingleFrameAnimation("tiles/breakwall",
                                     new Vector2(map.tiles[i, j].anim.position.X, map.tiles[i, j].anim.position.Y), 0.1f);
                             }
                         }
@@ -240,9 +241,10 @@ namespace DiskWars
             players = new Player[4];
             scores = new HUDText[4];
             toggles = new bool[4];
+            this.spawns = map.spawns;
             for (int i = 0; i < 4; i++)
             {
-                players[i] = new Player(map.spawns, i + 1);
+                players[i] = new Player(map.spawns, i + 1, this);
                 scores[i] = new HUDText("0", new Vector2(500 + i * 100, 20), customfont, (i == 0 ? Color.Red : (i == 1 ? Color.Yellow : (i == 2 ? Color.LightGreen : Color.Blue))));
                 RenderingEngine.UI.addText(scores[i]);
                 toggles[i] = false;
@@ -255,6 +257,7 @@ namespace DiskWars
             RenderingEngine.instance.removeAllBackgrounds();
             RenderingEngine.instance.removeAllLights();
         }
+
 
     }
 }

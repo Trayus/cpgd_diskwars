@@ -20,9 +20,11 @@ namespace DiskWars
         public Animation animation;
         public Animation speedPUAnimation;
         public Animation shieldPUAnimation;
+        public Animation piercePUAnimation;
         public Disk disk;
         Vector2 velocity = Vector2.Zero;
         Vector2[] spawn;
+        GameState gameState;
         Light playerlight;
         int num;
         public bool holdingDisk = true, released = false, reset = false;
@@ -63,10 +65,11 @@ namespace DiskWars
             enabled = false;
         }
 
-        public Player(Vector2[] spawn, int num)
+        public Player(Vector2[] spawn, int num, GameState gamestate)
         {
             this.num = num;
             this.spawn = spawn;
+            this.gameState = gameState;
             switch (num)
             {
                 case 1:
@@ -95,6 +98,10 @@ namespace DiskWars
 
             shieldPUAnimation = Animation.createSingleFrameAnimation("player/shieldpu", spawn[num - 1], 0.95f);
             shieldPUAnimation.setVisible(false);
+
+            piercePUAnimation = Animation.createSingleFrameAnimation("player/spikeoverlay", spawn[num - 1], 0.95f);
+            piercePUAnimation.setVisible(false);
+            piercePUAnimation.setScale(2.0f);
 
             animation.setScale(Constants.PLAYERSCALE);
             disk.setScale(Constants.PLAYERSCALE);
@@ -142,7 +149,7 @@ namespace DiskWars
                     other.velocity *= speed;
 
                     pUShieldOn = false;
-                    shieldPUAnimation.setVisible(false);
+                    shieldPUAnimation.setVisible(pUShieldOn);
                 }
             }
             return false;
@@ -283,9 +290,8 @@ namespace DiskWars
                         {
                             pUShield = false;
                             pUShieldOn = false;
+                            shieldPUAnimation.setVisible(pUShieldOn);
                         }
-                        //powerUps.Remove(powerUps[i]);
-                        //Need to remove the Powerup
                     }
                 }
             }

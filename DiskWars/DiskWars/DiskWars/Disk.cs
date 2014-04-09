@@ -61,6 +61,8 @@ namespace DiskWars
 
         public void update(float gameTime)
         {
+            Console.Write("X: " + animation.position.X + "\n");
+            Console.Write("Y: " + animation.position.Y + "\n");
             if (!player.holdingDisk)
             {
                 animation.position += velocity * gameTime * diskVelocity;
@@ -245,7 +247,7 @@ namespace DiskWars
                 {
                     m.tiles[ax, ay].type = Map.TILE.floor;
                     m.tiles[ax, ay].anim.removeFromRenderingEngine();
-                    m.tiles[ax, ay].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                    m.tiles[ax, ay].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[ax, ay].anim.position.X, m.tiles[ax, ay].anim.position.Y), 0.1f);
                     m.tiles[ax, ay].respawn = Constants.DESTR_RESPAWN;
                 }
@@ -253,7 +255,7 @@ namespace DiskWars
                 {
                     m.tiles[ax, by].type = Map.TILE.floor;
                     m.tiles[ax, by].anim.removeFromRenderingEngine();
-                    m.tiles[ax, by].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                    m.tiles[ax, by].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[ax, by].anim.position.X, m.tiles[ax, by].anim.position.Y), 0.1f);
                     m.tiles[ax, by].respawn = Constants.DESTR_RESPAWN;
                 }
@@ -261,7 +263,7 @@ namespace DiskWars
                 {
                     m.tiles[ax, cy].type = Map.TILE.floor;
                     m.tiles[ax, cy].anim.removeFromRenderingEngine();
-                    m.tiles[ax, cy].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                    m.tiles[ax, cy].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[ax, cy].anim.position.X, m.tiles[ax, cy].anim.position.Y), 0.1f);
                     m.tiles[ax, cy].respawn = Constants.DESTR_RESPAWN;
                 }
@@ -270,7 +272,7 @@ namespace DiskWars
                 {
                     m.tiles[bx, ay].type = Map.TILE.floor;
                     m.tiles[bx, ay].anim.removeFromRenderingEngine();
-                    m.tiles[bx, ay].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                    m.tiles[bx, ay].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[bx, ay].anim.position.X, m.tiles[bx, ay].anim.position.Y), 0.1f);
                     m.tiles[bx, ay].respawn = Constants.DESTR_RESPAWN;
                 }
@@ -278,7 +280,7 @@ namespace DiskWars
                 {
                     m.tiles[bx, by].type = Map.TILE.floor;
                     m.tiles[bx, by].anim.removeFromRenderingEngine();
-                    m.tiles[bx, by].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                    m.tiles[bx, by].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[bx, by].anim.position.X, m.tiles[bx, by].anim.position.Y), 0.1f);
                     m.tiles[bx, by].respawn = Constants.DESTR_RESPAWN;
                 }
@@ -286,7 +288,7 @@ namespace DiskWars
                 {
                     m.tiles[bx, cy].type = Map.TILE.floor;
                     m.tiles[bx, cy].anim.removeFromRenderingEngine();
-                    m.tiles[bx, cy].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                    m.tiles[bx, cy].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[bx, cy].anim.position.X, m.tiles[bx, cy].anim.position.Y), 0.1f);
                     m.tiles[bx, cy].respawn = Constants.DESTR_RESPAWN;
                 }
@@ -295,7 +297,7 @@ namespace DiskWars
                 {
                     m.tiles[cx, ay].type = Map.TILE.floor;
                     m.tiles[cx, ay].anim.removeFromRenderingEngine();
-                    m.tiles[cx, ay].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                    m.tiles[cx, ay].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[cx, ay].anim.position.X, m.tiles[cx, ay].anim.position.Y), 0.1f);
                     m.tiles[cx, ay].respawn = Constants.DESTR_RESPAWN;
                 }
@@ -303,7 +305,7 @@ namespace DiskWars
                 {
                     m.tiles[cx, by].type = Map.TILE.floor;
                     m.tiles[cx, by].anim.removeFromRenderingEngine();
-                    m.tiles[cx, by].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                    m.tiles[cx, by].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[cx, by].anim.position.X, m.tiles[cx, by].anim.position.Y), 0.1f);
                     m.tiles[cx, by].respawn = Constants.DESTR_RESPAWN;
                 }
@@ -311,7 +313,7 @@ namespace DiskWars
                 {
                     m.tiles[cx, cy].type = Map.TILE.floor;
                     m.tiles[cx, cy].anim.removeFromRenderingEngine();
-                    m.tiles[cx, cy].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible2",
+                    m.tiles[cx, cy].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[cx, cy].anim.position.X, m.tiles[cx, cy].anim.position.Y), 0.1f);
                     m.tiles[cx, cy].respawn = Constants.DESTR_RESPAWN;
                 }

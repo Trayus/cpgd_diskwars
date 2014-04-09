@@ -34,10 +34,10 @@ namespace DiskWars
                 switch (type)
                 {
                     case TILE.floor:
-                        anim = Animation.createSingleFrameAnimation("tiles/testset_floor", new Vector2(x, y), 0.1f);
+                        anim = Animation.createSingleFrameAnimation("tiles/floor", new Vector2(x, y), 0.1f);
                         break;
                     case TILE.wall:
-                        anim = Animation.createSingleFrameAnimation("tiles/testset_wall", new Vector2(x, y), 0.1f);
+                        anim = Animation.createSingleFrameAnimation("tiles/wall", new Vector2(x, y), 0.1f);
                         break;
                 }
             }
@@ -49,15 +49,15 @@ namespace DiskWars
                 switch (type)
                 {
                     case TILE.floor:
-                        anim = Animation.createSingleFrameAnimation("tiles/testset_floor", new Vector2(x, y), 0.1f);
+                        anim = Animation.createSingleFrameAnimation("tiles/floor", new Vector2(x, y), 0.1f);
                         break;
                     case TILE.wall:
                         switch (wall)
                         {
-                            case WALL.bounce: anim = Animation.createSingleFrameAnimation("tiles/testset_bounce", new Vector2(x, y), 0.1f); break;
-                            case WALL.destr: anim = Animation.createSingleFrameAnimation("tiles/testset_destructible1", new Vector2(x, y), 0.1f); break;
-                            case WALL.pass: anim = Animation.createSingleFrameAnimation("tiles/testset_passthrough", new Vector2(x, y), 0.1f); break;
-                            default: anim = Animation.createSingleFrameAnimation("tiles/testset_wall", new Vector2(x, y), 0.1f); break;
+                            case WALL.bounce: anim = Animation.createSingleFrameAnimation("tiles/stickwall", new Vector2(x, y), 0.1f); break;
+                            case WALL.destr: anim = Animation.createSingleFrameAnimation("tiles/breakwall", new Vector2(x, y), 0.1f); break;
+                            case WALL.pass: anim = Animation.createSingleFrameAnimation("tiles/passwall", new Vector2(x, y), 1.0f); break;
+                            default: anim = Animation.createSingleFrameAnimation("tiles/wall", new Vector2(x, y), 0.1f); break;
                         }
                         break;
                 }
