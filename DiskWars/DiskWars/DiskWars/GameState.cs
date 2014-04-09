@@ -94,8 +94,42 @@ namespace DiskWars
                                 map.tiles[i, j].respawn = 0;
                                 map.tiles[i, j].type = Map.TILE.wall;
                                 map.tiles[i, j].anim.removeFromRenderingEngine();
-                                map.tiles[i, j].anim = Animation.createSingleFrameAnimation("tiles/testset_destructible1",
+                                map.tiles[i, j].anim = Animation.createSingleFrameAnimation("tiles/breakwall",
                                     new Vector2(map.tiles[i, j].anim.position.X, map.tiles[i, j].anim.position.Y), 0.1f);
+                            }
+                        }
+                    }
+                }
+
+                //POWERUPS
+                for (int i = 0; i < map.powerUps.Count; i++)
+                {
+                    for (int j = 0; j < players.Length; j++)
+                    {
+                        if (map.powerUps[i].animation.checkHit(players[j].animation))
+                        {
+                            players[j].powerUps.Add(map.powerUps[i]);
+                            map.powerUps[i].animation.setVisible(false);
+                            map.powerUps.Remove(map.powerUps[i--]);
+                            break;
+                        }
+                    }
+                }
+
+                for (int j = 0; j < players.Length; j++)
+                {
+                    for (int i = 0; i < players[j].powerUps.Count; i++)
+                    {
+                        if (players[j].powerUps[i].activeTime < 0)
+                        {
+                            players[j].powerUps[i].respawnTimer--;
+                            if (players[j].powerUps[i].respawnTimer < 0)
+                            {
+                                players[j].powerUps[i].activeTime = Constants.POWERUPTIMER;
+                                players[j].powerUps[i].respawnTimer = Constants.POWERUPRESPAWN;
+                                map.powerUps.Add(players[j].powerUps[i]);
+                                players[j].powerUps[i].animation.setVisible(true);
+                                players[j].powerUps.Remove(players[j].powerUps[i]);
                             }
                         }
                     }

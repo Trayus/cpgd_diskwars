@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\maps\testmap.xnb</Output>
-      <Time>2014-04-06T13:10:14.2147705-07:00</Time>
+      <Time>2014-04-08T21:01:58.5251293-07:00</Time>
     </Item>
     <Item>
       <Source>bgs\dw.png</Source>
@@ -252,6 +252,123 @@
       <Options>None</Options>
       <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\tiles\testset_passthrough.xnb</Output>
       <Time>2014-02-23T17:11:43.299097-08:00</Time>
+    </Item>
+    <Item>
+      <Source>maps\Arena.png</Source>
+      <Name>maps\Arena</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\maps\Arena.xnb</Output>
+      <Time>2014-04-06T13:09:07.5919598-07:00</Time>
+    </Item>
+    <Item>
+      <Source>maps\Breakout.png</Source>
+      <Name>maps\Breakout</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\maps\Breakout.xnb</Output>
+      <Time>2014-04-06T13:09:07.5929599-07:00</Time>
+    </Item>
+    <Item>
+      <Source>player\orangepowerup.png</Source>
+      <Name>player\orangepowerup</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\player\orangepowerup.xnb</Output>
+      <Time>2014-04-06T13:09:07.5979602-07:00</Time>
+    </Item>
+    <Item>
+      <Source>player\shieldpu.png</Source>
+      <Name>player\shieldpu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\player\shieldpu.xnb</Output>
+      <Time>2014-04-06T13:09:07.5999603-07:00</Time>
+    </Item>
+    <Item>
+      <Source>tiles\breakwall.png</Source>
+      <Name>tiles\breakwall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\tiles\breakwall.xnb</Output>
+      <Time>2014-04-08T21:01:58.5301296-07:00</Time>
+    </Item>
+    <Item>
+      <Source>tiles\floor.png</Source>
+      <Name>tiles\floor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\tiles\floor.xnb</Output>
+      <Time>2014-04-08T21:01:58.5311297-07:00</Time>
+    </Item>
+    <Item>
+      <Source>tiles\passwall.png</Source>
+      <Name>tiles\passwall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\tiles\passwall.xnb</Output>
+      <Time>2014-04-08T21:01:58.5321297-07:00</Time>
+    </Item>
+    <Item>
+      <Source>player\powerbig.png</Source>
+      <Name>player\powerbig</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\player\powerbig.xnb</Output>
+      <Time>2014-04-08T21:01:58.5261294-07:00</Time>
+    </Item>
+    <Item>
+      <Source>player\powerpierce.png</Source>
+      <Name>player\powerpierce</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\player\powerpierce.xnb</Output>
+      <Time>2014-04-08T21:01:58.5271295-07:00</Time>
+    </Item>
+    <Item>
+      <Source>tiles\stickwall.png</Source>
+      <Name>tiles\stickwall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\tiles\stickwall.xnb</Output>
+      <Time>2014-04-08T21:01:58.5331298-07:00</Time>
+    </Item>
+    <Item>
+      <Source>tiles\wall.png</Source>
+      <Name>tiles\wall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\tiles\wall.xnb</Output>
+      <Time>2014-04-08T21:01:58.5341299-07:00</Time>
+    </Item>
+    <Item>
+      <Source>tiles\breakfloor.png</Source>
+      <Name>tiles\breakfloor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\tiles\breakfloor.xnb</Output>
+      <Time>2014-04-08T21:01:58.5291296-07:00</Time>
+    </Item>
+    <Item>
+      <Source>player\spikeoverlay.png</Source>
+      <Name>player\spikeoverlay</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\diskwars\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\player\spikeoverlay.xnb</Output>
+      <Time>2014-04-08T21:01:58.5281295-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

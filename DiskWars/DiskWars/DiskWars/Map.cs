@@ -17,14 +17,14 @@ namespace DiskWars
 {
     public class Map
     {
+        public List<PowerUp> powerUps;
         public enum TILE { empty, floor, wall, spawnfloor, upgradefloor };
-        public enum POWER { stealth, spike, speed, repel, none };
         public enum WALL { bounce, destr, pass, none };
+
         public class Tile
         {
             public TILE type;
             public Animation anim;
-            public POWER power = POWER.none;
             public WALL wall = WALL.none;
             public float respawn = 0;
             public Tile(TILE type, float x, float y)
@@ -34,10 +34,10 @@ namespace DiskWars
                 switch (type)
                 {
                     case TILE.floor:
-                        anim = Animation.createSingleFrameAnimation("tiles/testset_floor", new Vector2(x, y), 0.1f);
+                        anim = Animation.createSingleFrameAnimation("tiles/floor", new Vector2(x, y), 0.1f);
                         break;
                     case TILE.wall:
-                        anim = Animation.createSingleFrameAnimation("tiles/testset_wall", new Vector2(x, y), 0.1f);
+                        anim = Animation.createSingleFrameAnimation("tiles/wall", new Vector2(x, y), 0.1f);
                         break;
                 }
             }
@@ -49,15 +49,15 @@ namespace DiskWars
                 switch (type)
                 {
                     case TILE.floor:
-                        anim = Animation.createSingleFrameAnimation("tiles/testset_floor", new Vector2(x, y), 0.1f);
+                        anim = Animation.createSingleFrameAnimation("tiles/floor", new Vector2(x, y), 0.1f);
                         break;
                     case TILE.wall:
                         switch (wall)
                         {
-                            case WALL.bounce: anim = Animation.createSingleFrameAnimation("tiles/testset_bounce", new Vector2(x, y), 0.1f); break;
-                            case WALL.destr: anim = Animation.createSingleFrameAnimation("tiles/testset_destructible1", new Vector2(x, y), 0.1f); break;
-                            case WALL.pass: anim = Animation.createSingleFrameAnimation("tiles/testset_passthrough", new Vector2(x, y), 0.1f); break;
-                            default: anim = Animation.createSingleFrameAnimation("tiles/testset_wall", new Vector2(x, y), 0.1f); break;
+                            case WALL.bounce: anim = Animation.createSingleFrameAnimation("tiles/stickwall", new Vector2(x, y), 0.1f); break;
+                            case WALL.destr: anim = Animation.createSingleFrameAnimation("tiles/breakwall", new Vector2(x, y), 0.1f); break;
+                            case WALL.pass: anim = Animation.createSingleFrameAnimation("tiles/passwall", new Vector2(x, y), 1.0f); break;
+                            default: anim = Animation.createSingleFrameAnimation("tiles/wall", new Vector2(x, y), 0.1f); break;
                         }
                         break;
                 }
@@ -68,6 +68,7 @@ namespace DiskWars
 
         public Map(String name, ContentManager content)
         {
+            powerUps = new List<PowerUp>();
             tiles = new Tile[Constants.MAPX, Constants.MAPY];
             parse(content.Load<Texture2D>(name));
         }
@@ -121,17 +122,17 @@ namespace DiskWars
                         spawnList.Add(new Vector2(i * Constants.TILESIZE, j * Constants.TILESIZE));
                         tiles[i, j] = new Tile(TILE.floor, i * Constants.TILESIZE, j * Constants.TILESIZE);
                     }
-                    else if (temp.G == 0 && temp.B == 250)
+                    else if (temp.G == 250 && temp.B == 0)
                     {
                         tiles[i, j] = new Tile(TILE.floor, i * Constants.TILESIZE, j * Constants.TILESIZE);
                         if (temp.R == 100)
-                            tiles[i, j].power = POWER.speed;
+                            powerUps.Add(new PowerUp(new Vector2(i * Constants.TILESIZE, j * Constants.TILESIZE), PowerUp.TYPE.big));
                         if (temp.R == 150)
-                            tiles[i, j].power = POWER.stealth;
+                            powerUps.Add(new PowerUp(new Vector2(i * Constants.TILESIZE, j * Constants.TILESIZE), PowerUp.TYPE.pierce));
                         if (temp.R == 200)
-                            tiles[i, j].power = POWER.spike;
-                        if (temp.R == 250)
-                            tiles[i, j].power = POWER.repel;
+                            powerUps.Add(new PowerUp(new Vector2(i * Constants.TILESIZE, j * Constants.TILESIZE), PowerUp.TYPE.shield));
+                        if (temp.R == 50)
+                            powerUps.Add(new PowerUp(new Vector2(i * Constants.TILESIZE, j * Constants.TILESIZE), PowerUp.TYPE.speed));
                     }
                     else if (temp.G == 250 && temp.B == 250)
                     {

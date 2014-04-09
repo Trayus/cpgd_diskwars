@@ -26,3 +26,16 @@ Content\tiles\testset_bounce.xnb
 Content\tiles\testset_destructible1.xnb
 Content\tiles\testset_destructible2.xnb
 Content\tiles\testset_passthrough.xnb
+Content\maps\Arena.xnb
+Content\maps\Breakout.xnb
+Content\player\orangepowerup.xnb
+Content\player\shieldpu.xnb
+Content\tiles\breakwall.xnb
+Content\tiles\floor.xnb
+Content\tiles\passwall.xnb
+Content\player\powerbig.xnb
+Content\player\powerpierce.xnb
+Content\tiles\stickwall.xnb
+Content\tiles\wall.xnb
+Content\tiles\breakfloor.xnb
+Content\player\spikeoverlay.xnb
