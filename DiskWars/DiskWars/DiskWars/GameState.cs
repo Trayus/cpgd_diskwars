@@ -28,6 +28,8 @@ namespace DiskWars
         Player[] players;
         HUDText[] scores;
         bool[] toggles;
+        Random random = new Random();
+
         Vector2[] spawns;
 
         public GameState(ContentManager content)
@@ -241,7 +243,9 @@ namespace DiskWars
             players = new Player[4];
             scores = new HUDText[4];
             toggles = new bool[4];
+
             this.spawns = map.spawns;
+
             for (int i = 0; i < 4; i++)
             {
                 players[i] = new Player(map.spawns, i + 1, this);
@@ -257,7 +261,37 @@ namespace DiskWars
             RenderingEngine.instance.removeAllBackgrounds();
             RenderingEngine.instance.removeAllLights();
         }
+        public Vector2 getRandomSpawn()
+        {
+            int randomNumber;
+            Boolean spaceEmpty = true;
+            int tries = 0;
 
+            do
+            {
+                randomNumber = random.Next(0, spawns.Length);
+                spaceEmpty = true;
+
+                for (int i = 0; i < 4; i++)
+                {
+                    //Test if any player is within two playerradius's from this spawn point.
+                    spaceEmpty &= !((Math.Abs(players[i].animation.position.X - spawns[randomNumber].X) < Constants.PLAYERRADIUS * 2) && (Math.Abs(players[i].animation.position.Y - spawns[randomNumber].Y) < Constants.PLAYERRADIUS * 2));
+
+                    //Test if any disk is within three playerradius's from this spawn point.
+                    spaceEmpty &= !((Math.Abs(players[i].disk.getPosition().X - spawns[randomNumber].X) < Constants.PLAYERRADIUS * 3) && (Math.Abs(players[i].disk.getPosition().Y - spawns[randomNumber].Y) < Constants.PLAYERRADIUS * 3));
+                }
+                //This is used so that it doesn't keep looping forever if it couldn't find a spot.
+                tries++;
+                if (tries > spawns.Length)
+                {
+                    Console.Write("Failed to find suitable spawn.");
+                    randomNumber = random.Next(0, spawns.Length);
+                    spaceEmpty = true;
+                }
+            } while (!spaceEmpty);
+
+            return spawns[randomNumber];
+        }
 
     }
 }

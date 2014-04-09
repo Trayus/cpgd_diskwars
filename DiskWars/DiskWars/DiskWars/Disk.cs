@@ -61,8 +61,8 @@ namespace DiskWars
 
         public void update(float gameTime)
         {
-            Console.Write("X: " + animation.position.X + "\n");
-            Console.Write("Y: " + animation.position.Y + "\n");
+            //Console.Write("X: " + animation.position.X + "\n");
+            //Console.Write("Y: " + animation.position.Y + "\n");
             if (!player.holdingDisk)
             {
                 animation.position += velocity * gameTime * diskVelocity;

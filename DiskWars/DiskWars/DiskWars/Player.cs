@@ -32,8 +32,9 @@ namespace DiskWars
         float respawnTimer;
         public bool alive = true;
         public int score = 0;
-        Random random;
         public List<PowerUp> powerUps;
+
+        Random random = new Random();
 
         bool pUSpeed = false;
         bool pUBig = false;
@@ -50,7 +51,7 @@ namespace DiskWars
             disk.disklight.setEnabled(true);
             enabled = true;
 
-            animation.position = getRandomSpawn();
+            animation.position = gameState.getRandomSpawn();
             velocity = Vector2.Zero;
             alive = true;
             disk.setPosition(animation.position);
@@ -65,7 +66,7 @@ namespace DiskWars
             enabled = false;
         }
 
-        public Player(Vector2[] spawn, int num, GameState gamestate)
+        public Player(Vector2[] spawn, int num, GameState gameState)
         {
             this.num = num;
             this.spawn = spawn;
@@ -162,7 +163,7 @@ namespace DiskWars
 
             if (!alive && respawnTimer <= 0)
             {
-                animation.position = getRandomSpawn();
+                animation.position = gameState.getRandomSpawn();
                 velocity = Vector2.Zero;
                 alive = true;
                 animation.setVisible(true);
@@ -385,11 +386,6 @@ namespace DiskWars
             }
         }
 
-        public Vector2 getRandomSpawn()
-        {
-            int randomNumber = random.Next(0, spawn.Length);
-            Console.Write(spawn.Length);
-            return spawn[randomNumber];
-        }
+
     }
 }
