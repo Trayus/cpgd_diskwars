@@ -104,7 +104,7 @@ namespace DiskWars
                 {
                     for (int j = 0; j < players.Length; j++)
                     {
-                        if (map.powerUps[i].animation.checkHit(players[j].animation))
+                        if (players[j].alive && map.powerUps[i].animation.checkHit(players[j].animation))
                         {
                             players[j].powerUps.Add(map.powerUps[i]);
                             map.powerUps[i].animation.setVisible(false);

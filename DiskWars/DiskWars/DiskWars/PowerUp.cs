@@ -52,19 +52,19 @@ namespace DiskWars
             {
                 case TYPE.big:
                     animation = Animation.createSingleFrameAnimation("player/powerbig", spawn, 1.0f);
-                    pULight = new Light(new Color(1f, 0.2f, 0.2f), animation.position, Constants.POWERUPLIGHTPOWER * 2, Constants.POWERUPLIGHTSIZE);
+                    pULight = new Light(new Color(0.2f, 0.2f, 1f), animation.position, Constants.POWERUPLIGHTPOWER * 2, Constants.POWERUPLIGHTSIZE);
                     break;
                 case TYPE.pierce:
                     animation = Animation.createSingleFrameAnimation("player/powerpierce", spawn, 1.0f);
                     pULight = new Light(new Color(1f, 1f, 0.2f), animation.position, Constants.POWERUPLIGHTPOWER * 2, Constants.POWERUPLIGHTSIZE);
                     break;
                 case TYPE.shield:
-                    animation = Animation.createSingleFrameAnimation("player/greenplayer", spawn, 1.0f);
+                    animation = Animation.createSingleFrameAnimation("player/powershield", spawn, 1.0f);
                     pULight = new Light(new Color(0.2f, 1f, 0.2f), animation.position, Constants.POWERUPLIGHTPOWER * 2, Constants.POWERUPLIGHTSIZE);
                     break;
                 case TYPE.speed:
-                    animation = Animation.createSingleFrameAnimation("player/blueplayer", spawn, 1.0f);
-                    pULight = new Light(new Color(0.2f, 0.2f, 1f), animation.position, Constants.POWERUPLIGHTPOWER * 2, Constants.POWERUPLIGHTSIZE);
+                    animation = Animation.createSingleFrameAnimation("player/powerspeed", spawn, 1.0f);
+                    pULight = new Light(new Color(1f, 0.2f, 0.2f), animation.position, Constants.POWERUPLIGHTPOWER * 2, Constants.POWERUPLIGHTSIZE);
                     break;
             }
 

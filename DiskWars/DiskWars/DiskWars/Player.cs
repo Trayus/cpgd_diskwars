@@ -39,7 +39,6 @@ namespace DiskWars
         bool pUBig = false;
         bool pUPierce = false;
         bool pUShield = false;
-        bool pUShieldOn = false;
 
         public bool enabled = true;
         public void enable()
@@ -96,12 +95,9 @@ namespace DiskWars
             speedPUAnimation = Animation.createSingleFrameAnimation("player/orangepowerup", spawn[num - 1], 0.95f);
             speedPUAnimation.setVisible(false);
 
-            shieldPUAnimation = Animation.createSingleFrameAnimation("player/shieldpu", spawn[num - 1], 0.95f);
+            shieldPUAnimation = Animation.createSingleFrameAnimation("player/shieldpu", spawn[num - 1], 1.0f);
             shieldPUAnimation.setVisible(false);
-
-            piercePUAnimation = Animation.createSingleFrameAnimation("player/spikeoverlay", spawn[num - 1], 0.95f);
-            piercePUAnimation.setVisible(false);
-            piercePUAnimation.setScale(2.0f);
+            shieldPUAnimation.setScale(20f);
 
             animation.setScale(Constants.PLAYERSCALE);
             disk.setScale(Constants.PLAYERSCALE);
@@ -122,6 +118,10 @@ namespace DiskWars
             {
                 pu.activeTime = -1;
             }
+            pUSpeed = false;
+            pUBig = false;
+            pUPierce = false;
+            pUShield = false;
             respawnTimer = Constants.RESPAWN;
             alive = false;
             score += Constants.SCOREPERDEATH;
@@ -131,7 +131,7 @@ namespace DiskWars
         {
             if (Vector2.Distance(animation.position, other.animation.position) < Constants.DISKRADIUS + Constants.PLAYERRADIUS)
             {
-                if (!pUShieldOn)
+                if (!pUShield)
                 {
                     kill();
                     return true;
@@ -148,8 +148,13 @@ namespace DiskWars
                     other.velocity.Normalize();
                     other.velocity *= speed;
 
-                    pUShieldOn = false;
-                    shieldPUAnimation.setVisible(pUShieldOn);
+                    pUShield = false;
+                    shieldPUAnimation.setVisible(pUShield);
+                    foreach (PowerUp pu in powerUps)
+                    {
+                        if (pu.type == PowerUp.TYPE.shield)
+                            pu.activeTime = -1;
+                    }
                 }
             }
             return false;
@@ -243,7 +248,7 @@ namespace DiskWars
                     disk.setRotation(animation.getRotation());
                 }
 
-                shieldPUAnimation.setVisible(pUShieldOn);
+                shieldPUAnimation.setVisible(pUShield);
             }
             
             //for each power up, if timer < 0 move power up back to map, else decrement the timer.
@@ -254,28 +259,21 @@ namespace DiskWars
                     if (powerUps[i].type == PowerUp.TYPE.speed)
                         pUSpeed = true;
                     if (powerUps[i].type == PowerUp.TYPE.big)
+                    {
                         pUBig = true;
+                        pUPierce = true;
+                    }
                     if (powerUps[i].type == PowerUp.TYPE.pierce)
                         pUPierce = true;
-                    if (powerUps[i].type == PowerUp.TYPE.shield && powerUps[i].activeTime >= Constants.POWERUPTIMER)
+                    if (powerUps[i].type == PowerUp.TYPE.shield)
                     {
-                        pUShieldOn = true;
                         pUShield = true;
                     }
-                }
-                else
-                {
-                    pUSpeed = false;
-                    pUBig = false;
-                    pUPierce = false;
-                    pUShieldOn = false;
-                    pUShield = false;
-                }
 
-                if (powerUps[i].activeTime >= 0)
-                {
-                    powerUps[i].activeTime--;
-                    if (powerUps[i].activeTime < 0)
+                    if (powerUps[i].type != PowerUp.TYPE.shield)
+                        powerUps[i].activeTime--;
+
+                    if (powerUps[i].activeTime < 0 || (powerUps[i].type == PowerUp.TYPE.shield && !pUShield))
                     {
                         if (powerUps[i].type == PowerUp.TYPE.speed)
                         {
@@ -283,14 +281,16 @@ namespace DiskWars
                             speedPUAnimation.setVisible(false);
                         }
                         if (powerUps[i].type == PowerUp.TYPE.big)
+                        {
                             pUBig = false;
-                        if (powerUps[i].type == PowerUp.TYPE.pierce)
                             pUPierce = false;
+                        }
+                        /*if (powerUps[i].type == PowerUp.TYPE.pierce)
+                            pUPierce = false;*/
                         if (powerUps[i].type == PowerUp.TYPE.shield)
                         {
                             pUShield = false;
-                            pUShieldOn = false;
-                            shieldPUAnimation.setVisible(pUShieldOn);
+                            shieldPUAnimation.setVisible(false);
                         }
                     }
                 }
@@ -311,11 +311,13 @@ namespace DiskWars
             {
                 disk.diskRadius = Constants.DISKRADIUSPU;
                 disk.animation.setScale(Constants.PLAYERSCALE * Constants.POWERUPSIZESCALE);
+                disk.diskPierce = true;
             }
             else
             {
                 disk.diskRadius = Constants.DISKRADIUS;
                 disk.animation.setScale(Constants.PLAYERSCALE);
+                disk.diskPierce = false;
             }
 
             if (pUPierce)
