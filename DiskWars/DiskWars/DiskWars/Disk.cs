@@ -61,8 +61,8 @@ namespace DiskWars
 
         public void update(float gameTime)
         {
-            Console.Write("X: " + animation.position.X + "\n");
-            Console.Write("Y: " + animation.position.Y + "\n");
+            //Console.Write("X: " + animation.position.X + "\n");
+            //Console.Write("Y: " + animation.position.Y + "\n");
             if (!player.holdingDisk)
             {
                 animation.position += velocity * gameTime * diskVelocity;
@@ -95,8 +95,11 @@ namespace DiskWars
 
                     float speed = this.velocity.Length();
                     this.velocity = this.velocity * Vector2.Dot(this.velocity, axis) + mid * Vector2.Dot(this.velocity, mid);
-                    this.velocity.Normalize();
-                    this.velocity *= speed;
+                    if (this.velocity.X != 0 && this.velocity.Y != 0)
+                    {
+                        this.velocity.Normalize();
+                        this.velocity *= speed;
+                    }
                 }
                 if (!other.stopped)
                 {
@@ -107,8 +110,11 @@ namespace DiskWars
 
                     float speed = other.velocity.Length();
                     other.velocity = other.velocity * Vector2.Dot(other.velocity, axis) + mid * Vector2.Dot(other.velocity, mid);
-                    other.velocity.Normalize();
-                    other.velocity *= speed;
+                    if (other.velocity.X != 0 && other.velocity.Y != 0)
+                    {
+                        other.velocity.Normalize();
+                        other.velocity *= speed;
+                    }
                 }
                 return true;
             }
