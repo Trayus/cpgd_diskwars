@@ -116,6 +116,7 @@ namespace DiskWars
                         other.velocity *= speed;
                     }
                 }
+                SoundManager.PlaySound("sound/dw_diskhit");
                 return true;
             }
             return false;
@@ -167,6 +168,9 @@ namespace DiskWars
                 animation.position.Y = ((ay + 1) * Constants.TILESIZE - Constants.TILESIZE / 2) + diskRadius;
                 if (m.tiles[bx, ay].wall == Map.WALL.bounce)
                 {
+                    if (Math.Abs(velocity.X) > 0.2f || Math.Abs(velocity.Y) > 0.2f)
+                        SoundManager.PlaySound("sound/dw_slowhit");
+
                     if (!Constants.BOUNCETOSLOW)
                     {
                         velocity.Y = 0;
@@ -181,13 +185,19 @@ namespace DiskWars
                     }
                 }
                 else
+                {
                     velocity.Y = -velocity.Y;
+                    SoundManager.PlaySound("sound/dw_wallhit");
+                }
             }
             if ((ca && cc) || cb)
             {
                 animation.position.Y = (cy * Constants.TILESIZE - Constants.TILESIZE / 2) - diskRadius;
                 if (m.tiles[bx, cy].wall == Map.WALL.bounce)
                 {
+                    if (Math.Abs(velocity.X) > 0.2f || Math.Abs(velocity.Y) > 0.2f)
+                        SoundManager.PlaySound("sound/dw_slowhit");
+
                     if (!Constants.BOUNCETOSLOW)
                     {
                         velocity.Y = 0;
@@ -202,13 +212,19 @@ namespace DiskWars
                     }
                 }
                 else
+                {
                     velocity.Y = -velocity.Y;
+                    SoundManager.PlaySound("sound/dw_wallhit");
+                }
             }
             if ((aa && ca) || ba)
             {
                 animation.position.X = ((ax + 1) * Constants.TILESIZE - Constants.TILESIZE / 2) + diskRadius;
                 if (m.tiles[ax, by].wall == Map.WALL.bounce)
                 {
+                    if (Math.Abs(velocity.X) > 0.2f || Math.Abs(velocity.Y) > 0.2f)
+                        SoundManager.PlaySound("sound/dw_slowhit");
+
                     if (!Constants.BOUNCETOSLOW)
                     {
                         velocity.Y = 0;
@@ -223,13 +239,19 @@ namespace DiskWars
                     }
                 }
                 else
+                {
                     velocity.X = -velocity.X;
+                    SoundManager.PlaySound("sound/dw_wallhit");
+                }
             }
             if ((ac && cc) || bc)
             {
                 animation.position.X = (cx * Constants.TILESIZE - Constants.TILESIZE / 2) - diskRadius;
                 if (m.tiles[cx, by].wall == Map.WALL.bounce)
                 {
+                    if (Math.Abs(velocity.X) > 0.2f || Math.Abs(velocity.Y) > 0.2f)
+                        SoundManager.PlaySound("sound/dw_slowhit");
+
                     if (!Constants.BOUNCETOSLOW)
                     {
                         velocity.Y = 0;
@@ -244,7 +266,10 @@ namespace DiskWars
                     }
                 }
                 else
+                {
                     velocity.X = -velocity.X;
+                    SoundManager.PlaySound("sound/dw_wallhit");
+                }
             }
 
             if (ax >= 0 && ax < Constants.MAPX && ay >= 0 && ay < Constants.MAPY)
@@ -256,6 +281,7 @@ namespace DiskWars
                     m.tiles[ax, ay].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[ax, ay].anim.position.X, m.tiles[ax, ay].anim.position.Y), 0.1f);
                     m.tiles[ax, ay].respawn = Constants.DESTR_RESPAWN;
+                    SoundManager.PlaySound("sound/dw_breakoff");
                 }
                 if (m.tiles[ax, by].wall == Map.WALL.destr && m.tiles[ax, by].respawn == 0)
                 {
@@ -264,6 +290,7 @@ namespace DiskWars
                     m.tiles[ax, by].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[ax, by].anim.position.X, m.tiles[ax, by].anim.position.Y), 0.1f);
                     m.tiles[ax, by].respawn = Constants.DESTR_RESPAWN;
+                    SoundManager.PlaySound("sound/dw_breakoff");
                 }
                 if (m.tiles[ax, cy].wall == Map.WALL.destr && m.tiles[ax, cy].respawn == 0)
                 {
@@ -272,6 +299,7 @@ namespace DiskWars
                     m.tiles[ax, cy].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[ax, cy].anim.position.X, m.tiles[ax, cy].anim.position.Y), 0.1f);
                     m.tiles[ax, cy].respawn = Constants.DESTR_RESPAWN;
+                    SoundManager.PlaySound("sound/dw_breakoff");
                 }
 
                 if (m.tiles[bx, ay].wall == Map.WALL.destr && m.tiles[bx, ay].respawn == 0)
@@ -281,6 +309,7 @@ namespace DiskWars
                     m.tiles[bx, ay].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[bx, ay].anim.position.X, m.tiles[bx, ay].anim.position.Y), 0.1f);
                     m.tiles[bx, ay].respawn = Constants.DESTR_RESPAWN;
+                    SoundManager.PlaySound("sound/dw_breakoff");
                 }
                 if (m.tiles[bx, by].wall == Map.WALL.destr && m.tiles[bx, by].respawn == 0)
                 {
@@ -289,6 +318,7 @@ namespace DiskWars
                     m.tiles[bx, by].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[bx, by].anim.position.X, m.tiles[bx, by].anim.position.Y), 0.1f);
                     m.tiles[bx, by].respawn = Constants.DESTR_RESPAWN;
+                    SoundManager.PlaySound("sound/dw_breakoff");
                 }
                 if (m.tiles[bx, cy].wall == Map.WALL.destr && m.tiles[bx, cy].respawn == 0)
                 {
@@ -297,6 +327,7 @@ namespace DiskWars
                     m.tiles[bx, cy].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[bx, cy].anim.position.X, m.tiles[bx, cy].anim.position.Y), 0.1f);
                     m.tiles[bx, cy].respawn = Constants.DESTR_RESPAWN;
+                    SoundManager.PlaySound("sound/dw_breakoff");
                 }
 
                 if (m.tiles[cx, ay].wall == Map.WALL.destr && m.tiles[cx, ay].respawn == 0)
@@ -306,6 +337,7 @@ namespace DiskWars
                     m.tiles[cx, ay].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[cx, ay].anim.position.X, m.tiles[cx, ay].anim.position.Y), 0.1f);
                     m.tiles[cx, ay].respawn = Constants.DESTR_RESPAWN;
+                    SoundManager.PlaySound("sound/dw_breakoff");
                 }
                 if (m.tiles[cx, by].wall == Map.WALL.destr && m.tiles[cx, by].respawn == 0)
                 {
@@ -314,6 +346,7 @@ namespace DiskWars
                     m.tiles[cx, by].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[cx, by].anim.position.X, m.tiles[cx, by].anim.position.Y), 0.1f);
                     m.tiles[cx, by].respawn = Constants.DESTR_RESPAWN;
+                    SoundManager.PlaySound("sound/dw_breakoff");
                 }
                 if (m.tiles[cx, cy].wall == Map.WALL.destr && m.tiles[cx, cy].respawn == 0)
                 {
@@ -322,6 +355,7 @@ namespace DiskWars
                     m.tiles[cx, cy].anim = Animation.createSingleFrameAnimation("tiles/breakfloor",
                         new Vector2(m.tiles[cx, cy].anim.position.X, m.tiles[cx, cy].anim.position.Y), 0.1f);
                     m.tiles[cx, cy].respawn = Constants.DESTR_RESPAWN;
+                    SoundManager.PlaySound("sound/dw_breakoff");
                 }
             }
         }

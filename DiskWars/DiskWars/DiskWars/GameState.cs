@@ -96,6 +96,7 @@ namespace DiskWars
                                 map.tiles[i, j].anim.removeFromRenderingEngine();
                                 map.tiles[i, j].anim = Animation.createSingleFrameAnimation("tiles/breakwall",
                                     new Vector2(map.tiles[i, j].anim.position.X, map.tiles[i, j].anim.position.Y), 0.1f);
+                                SoundManager.PlaySound("sound/dw_breakon");
                             }
                         }
                     }
@@ -111,6 +112,7 @@ namespace DiskWars
                             players[j].powerUps.Add(map.powerUps[i]);
                             map.powerUps[i].animation.setVisible(false);
                             map.powerUps.Remove(map.powerUps[i--]);
+                            SoundManager.PlaySound("sound/dw_pickup");
                             break;
                         }
                     }
@@ -253,6 +255,7 @@ namespace DiskWars
                 RenderingEngine.UI.addText(scores[i]);
                 toggles[i] = false;
             }
+            SoundManager.PlayMusicLooped("sound/4614(2)");
         }
         public override void exitState()
         {
@@ -260,6 +263,7 @@ namespace DiskWars
             RenderingEngine.instance.removeAllAnimations();
             RenderingEngine.instance.removeAllBackgrounds();
             RenderingEngine.instance.removeAllLights();
+            SoundManager.StopMusic();
         }
         public Vector2 getRandomSpawn()
         {

@@ -126,6 +126,7 @@ namespace DiskWars
             respawnTimer = Constants.RESPAWN;
             alive = false;
             score += Constants.SCOREPERDEATH;
+            SoundManager.PlaySound("sound/dw_death");
         }
 
         public bool check(Disk other)
@@ -144,7 +145,7 @@ namespace DiskWars
                     Vector3 midden = Vector3.Cross(new Vector3(axis, 0), Vector3.UnitZ);
                     Vector2 mid = new Vector2(midden.X, midden.Y);
 
-                    float speed = other.velocity.Length();
+                    float speed = other.velocity.Length() * 1.5f;
                     other.velocity = other.velocity * Vector2.Dot(other.velocity, axis) + mid * Vector2.Dot(other.velocity, mid);
                     other.velocity.Normalize();
                     other.velocity *= speed;
@@ -177,6 +178,7 @@ namespace DiskWars
                 disk.setPosition(animation.position);
                 disk.stopped = false;
                 holdingDisk = true;
+                SoundManager.PlaySound("sound/dw_spawn");
             }
 
             if (alive)
@@ -226,6 +228,7 @@ namespace DiskWars
                     holdingDisk = true;
                     disk.setVelocity(Vector2.Zero);
                     disk.stopped = false;
+                    SoundManager.PlaySound("sound/dw_grab");
                 }
                 if (holdingDisk && !reset && (Input.RT(num) < 0.2f && Input.LT(num) < 0.2f))
                     reset = true;
@@ -236,6 +239,7 @@ namespace DiskWars
                     diskTimer = Constants.MINDISKTIME;
                     released = false;
                     reset = false;
+                    SoundManager.PlaySound("sound/dw_shoot");
                 }
                 if ((Input.RT(num) < 0.2f && Input.LT(num) < 0.2f) && !holdingDisk && diskTimer <= 0)
                     released = true;
