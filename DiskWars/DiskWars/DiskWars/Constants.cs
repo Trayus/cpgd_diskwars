@@ -7,7 +7,7 @@ namespace DiskWars
 {
     class Constants
     {
-        public static bool DEBUG = true;
+        public static bool DEBUG = false;
         public static bool WRAP = false;
         public static bool BOUNCETOSLOW = false;
 
@@ -27,7 +27,7 @@ namespace DiskWars
         public static float DISKLIGHTPOWER = 0.3f;
         public static float POWERUPLIGHTPOWER = 0.2f;
         public static float VELOCITY = 0.25f;
-        public static float DISKVELOCITY = 0.9f;
+        public static float DISKVELOCITY = 1.1f;
         public static float DISKVELOCITYPU = 1.8f;
         public static float MAXVELOCITY = 3.0f;
         public static float ACCELERATION = 0.03f;
@@ -42,8 +42,8 @@ namespace DiskWars
         public static float POWERUPSCALE = 1.5f;
         public static float POWERUPSIZESCALE = 1.5f;
         public static float DESTR_RESPAWN = 5000f;
-        public static String[] mapnames = { "Arena", "Breakout", "WallWorld" };
-        public static float POWERUPTIMER = 300.0f;
-        public static float POWERUPRESPAWN = 300.0f;
+        public static String[] mapnames = { "Arena", "Box", "Breakout", "Ring", "WallWorld" };
+        public static float POWERUPTIMER = 500.0f;
+        public static float POWERUPRESPAWN = 800.0f;
     }
 }

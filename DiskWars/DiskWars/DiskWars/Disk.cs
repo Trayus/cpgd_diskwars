@@ -187,7 +187,8 @@ namespace DiskWars
                 else
                 {
                     velocity.Y = -velocity.Y;
-                    SoundManager.PlaySound("sound/dw_wallhit");
+                    if (Math.Abs(velocity.X) > 0.2f || Math.Abs(velocity.Y) > 0.2f)
+                        SoundManager.PlaySound("sound/dw_wallhit");
                 }
             }
             if ((ca && cc) || cb)
@@ -214,7 +215,8 @@ namespace DiskWars
                 else
                 {
                     velocity.Y = -velocity.Y;
-                    SoundManager.PlaySound("sound/dw_wallhit");
+                    if (Math.Abs(velocity.X) > 0.2f || Math.Abs(velocity.Y) > 0.2f)
+                        SoundManager.PlaySound("sound/dw_wallhit");
                 }
             }
             if ((aa && ca) || ba)
@@ -241,7 +243,8 @@ namespace DiskWars
                 else
                 {
                     velocity.X = -velocity.X;
-                    SoundManager.PlaySound("sound/dw_wallhit");
+                    if (Math.Abs(velocity.X) > 0.2f || Math.Abs(velocity.Y) > 0.2f)
+                        SoundManager.PlaySound("sound/dw_wallhit");
                 }
             }
             if ((ac && cc) || bc)
@@ -268,11 +271,14 @@ namespace DiskWars
                 else
                 {
                     velocity.X = -velocity.X;
-                    SoundManager.PlaySound("sound/dw_wallhit");
+                    if (Math.Abs(velocity.X) > 0.2f || Math.Abs(velocity.Y) > 0.2f)
+                        SoundManager.PlaySound("sound/dw_wallhit");
                 }
             }
 
-            if (ax >= 0 && ax < Constants.MAPX && ay >= 0 && ay < Constants.MAPY)
+            if (ax >= 0 && ax < Constants.MAPX && ay >= 0 && ay < Constants.MAPY &&
+                bx >= 0 && bx < Constants.MAPX && by >= 0 && by < Constants.MAPY &&
+                cx >= 0 && cx < Constants.MAPX && cy >= 0 && cy < Constants.MAPY)
             {
                 if (m.tiles[ax, ay].wall == Map.WALL.destr && m.tiles[ax, ay].respawn == 0)
                 {

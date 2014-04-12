@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -19,7 +20,7 @@ namespace DiskWars
     class GameState : State
     {
         public static String mapname = "initialized from menu state";
-        private SpriteFont customfont;
+        private SpriteFont customfont, customfont2;
         ContentManager content;
 
         float timer;
@@ -27,8 +28,10 @@ namespace DiskWars
         Map map;
         Player[] players;
         HUDText[] scores;
+        HUDText large;
         bool[] toggles;
         Random random = new Random();
+        FileStream fs;
 
         Vector2[] spawns;
 
@@ -36,6 +39,7 @@ namespace DiskWars
         {
             this.content = content;
             customfont = content.Load<SpriteFont>("gamefont");
+            customfont2 = content.Load<SpriteFont>("menufont");
         }
 
         public override void update(float gameTime)
@@ -54,11 +58,15 @@ namespace DiskWars
             }
             else if (timer < Constants.TIMEMILLIS && timer > 0)
             {
+                writeString("t = " + timer + " " + players[0].score + " " + players[1].score + " " + players[2].score + " " + players[3].score);
+
                 // game logic 
                 for (int i = 0; i < 4; i++)
                 {
                     if (players[i].enabled)
                     {
+                        writeString(players[i].getData());
+
                         players[i].update(gameTime);
                         players[i].collisionDetectionVsMap(map);
                         players[i].disk.update(gameTime);
@@ -146,11 +154,29 @@ namespace DiskWars
             {
                 time.setText("start in " + ((int)(timer / 1000 + 1) - Constants.TIMEMILLIS / 1000) + " s");
                 time.setColor(Color.White);
+
+                large.setEnabled(true);
+                large.setText("   " + ((int)(timer / 1000 + 1) - Constants.TIMEMILLIS / 1000) + "...");
             }
             else if (timer < 0)
             {
                 time.setText("Game over!");
                 time.setColor(Color.White);
+
+                int winner = 0;
+                if (players[1].score > players[winner].score) winner = 1;
+                if (players[2].score > players[winner].score) winner = 2;
+                if (players[3].score > players[winner].score) winner = 3;
+
+                large.setEnabled(true);
+                large.setText("Player " + (winner + 1) + " wins!");
+                switch (winner)
+                {
+                    case 0: large.setColor(new Color(1f, 0.2f, 0.2f)); break;
+                    case 1: large.setColor(new Color(1f, 1f, 0.2f)); break;
+                    case 2: large.setColor(new Color(0.2f, 1f, 0.2f)); break;
+                    case 3: large.setColor(new Color(0.2f, 0.2f, 1f)); break;
+                }
             }
             else
             {
@@ -158,6 +184,13 @@ namespace DiskWars
                 time.setColor(new Color((float)Math.Sin(timer / 100 + 1.6) / 2 + 1f,
                                         (float)Math.Sin(timer / 100 + 3.1) / 2 + 1f,
                                         (float)Math.Sin(timer / 100 + 0.0) / 2 + 1f));
+
+                if (timer + 2000 > Constants.TIMEMILLIS)
+                    large.setEnabled(true);
+                else
+                    large.setEnabled(false);
+                large.setText("Begin!");
+
             }
         }
         private void checkEnabled()
@@ -244,6 +277,8 @@ namespace DiskWars
             map = new Map(mapname, content);
             players = new Player[4];
             scores = new HUDText[4];
+            large = new HUDText("Starting", new Vector2(880, 500), customfont2, Color.White);
+            RenderingEngine.UI.addText(large);
             toggles = new bool[4];
 
             this.spawns = map.spawns;
@@ -256,7 +291,22 @@ namespace DiskWars
                 toggles[i] = false;
             }
             SoundManager.PlayMusicLooped("sound/4614(2)");
+
+            fs = File.Open("dw_kb_" + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
+            writeString(mapname);
         }
+
+        public void writeString(String s)
+        {
+            int i;
+            byte[] chars = new byte[s.Length + 2];
+            for (i = 0; i < s.Length; i++)
+                chars[i] = (byte)s[i];
+            chars[i++] = (byte)13;
+            chars[i++] = (byte)10;
+            fs.Write(chars, 0, s.Length + 2);
+        }
+
         public override void exitState()
         {
             RenderingEngine.UI.removeAll();
@@ -264,6 +314,7 @@ namespace DiskWars
             RenderingEngine.instance.removeAllBackgrounds();
             RenderingEngine.instance.removeAllLights();
             SoundManager.StopMusic();
+            fs.Close();
         }
         public Vector2 getRandomSpawn()
         {

@@ -65,6 +65,24 @@ namespace DiskWars
             enabled = false;
         }
 
+        public String getData()
+        {
+            String ret = "p" + num + " ";
+            if (!alive)
+            {
+                ret += "dead";
+            }
+            else
+            {
+                ret += "pos <" + (int)animation.position.X + "," + (int)animation.position.Y + "> rot " +
+                    animation.getRotation();
+                ret += " disk <" + (int)disk.animation.position.X + "," + (int)disk.animation.position.Y + ">";
+                ret += (holdingDisk ? " holding t" : " holding f") + (released ? " returning t" : " returning f");
+                ret += (pUShield ? " shield t" : " shield f") + (pUSpeed ? " speed t" : " speed f");
+            }
+            return ret;
+        }
+
         public Player(Vector2[] spawn, int num, GameState gameState)
         {
             this.num = num;
