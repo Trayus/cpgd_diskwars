@@ -150,6 +150,7 @@
     <Compile Include="helpers\Timers.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MenuState.cs" />
+    <Compile Include="parser\KnowledgeParser.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PowerUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
