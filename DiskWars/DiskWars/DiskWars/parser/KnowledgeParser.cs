@@ -11,8 +11,12 @@ namespace DiskWars.parser
    static class KnowledgeParser
    {
       private static string mapPattern = @"^maps/(<mapName>[Arena|Box|Breakout|Ring|WallWorld])";
-      private static string timePattern = @"^t = (<timeMS>\d+) (<p1Score>\d+) (<p2Score>\d+) (<p3Score>\d+) (<p4Score>\d+)";
-      private static string playerPattern = @"^p(<playerNum>\d) pos \<(<posX>\d+),(<posY>\d+)\> rot (<rot>\d+) disk \<(<diskX>\d+),(<diskY>\d+)\> holding (<hasDisk>[t|f]) returning (<diskReturning>[t|f]) shield (<hasShield>[t|f]) speed (<hasSpeed>[t|f])";
+      
+      // Scores have .+ because of negative numbers, \d doesn't work
+      private static string timePattern = @"^t = (<timeMS>\d+) (<p1Score>.+) (<p2Score>.+) (<p3Score>.+) (<p4Score>.+)";
+      
+      // Rotation has .+ because of negative numbers, \d doesn't work
+      private static string playerPattern = @"^p(<playerNum>\d) pos \<(<posX>\d+),(<posY>\d+)\> rot (<rot>.+) disk \<(<diskX>\d+),(<diskY>\d+)\> holding (<hasDisk>[t|f]) returning (<diskReturning>[t|f]) shield (<hasShield>[t|f]) speed (<hasSpeed>[t|f])";
 
       private static Regex mapRE = new Regex(mapPattern);
       private static Regex timeRE = new Regex(timePattern);
@@ -60,6 +64,7 @@ namespace DiskWars.parser
 
                while ((line = sr.ReadLine()) != null)
                {
+                  currentFrame = new DWFrame();
                   parseTimeAndScore(line, currentFrame);
                   
                   while (sr.Peek() != 't')
@@ -67,6 +72,8 @@ namespace DiskWars.parser
                      line = sr.ReadLine();
 
                      parsePlayerAndDisk(line, currentFrame);
+
+                     // TODO: Use DWFrame and play within Dictionary
                   }
                }
             }
@@ -97,14 +104,48 @@ namespace DiskWars.parser
 
       private static void parsePlayerAndDisk(string line, DWFrame currentFrame)
       {
+         bool playerDead = false;
+         int playerNum, playerRot;
+         Vector2 playerPos = new Vector2();
+         Vector2 diskPos = new Vector2();
+         bool hasDisk, diskReturning, hasShield, hasSpeed;
+
          if (!playerRE.IsMatch(line))
          {
-            throw new Exception("KP Error: Unrecognized player line: " + line);
+            if (line.Contains("dead"))
+            {
+               playerDead = true;
+            }
+            else
+            {
+               throw new Exception("KP Error: Unrecognized player line: " + line);
+            }
          }
 
-         Match playerMatch = playerRE.Match(line);
+         if (!playerDead)
+         {
+            Match playerMatch = playerRE.Match(line);
+            playerNum = Convert.ToInt32(playerMatch.Groups["playerNum"].Value);
+            playerPos.X = Convert.ToInt32(playerMatch.Groups["posX"].Value);
+            playerPos.Y = Convert.ToInt32(playerMatch.Groups["posY"].Value);
+            playerRot = Convert.ToInt32(playerMatch.Groups["rot"].Value);
 
-         // TODO: The rest of this, lol.
+            diskPos.X = Convert.ToInt32(playerMatch.Groups["diskX"].Value);
+            diskPos.Y = Convert.ToInt32(playerMatch.Groups["diskY"].Value);
+
+            hasDisk = playerMatch.Groups["hasDisk"].Value.Equals("t");
+            diskReturning = playerMatch.Groups["diskReturning"].Value.Equals("t");
+            hasShield = playerMatch.Groups["hasShield"].Value.Equals("t");
+            hasSpeed = playerMatch.Groups["hasSpeed"].Value.Equals("t");
+
+            // TODO: Build the DWFrame
+         }
+         else
+         {
+            playerNum = Convert.ToInt32(line.Substring(1, 1));
+
+            // TODO: Build the DWFrame
+         }
       }
 
       // The following functions should never be used independently... 
@@ -114,7 +155,7 @@ namespace DiskWars.parser
       /// for a given set of game conditions. This narrows the focus down by map.
       /// </summary>
       /// <param name="mapName">The name of the map</param>
-      /// <returns>Ugly Dictionary. You don't to use this alone.</returns>
+      /// <returns>Ugly Dictionary. You don't want to use this alone.</returns>
       public static Dictionary<int, Dictionary<PositionSelector,
        Dictionary<PositionSelector, DWFrame>>> Map(string mapName) 
       {
