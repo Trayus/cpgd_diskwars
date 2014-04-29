@@ -31,7 +31,7 @@ namespace DiskWars.parser
       private static int currentPlayersAlive;
       private static PositionSelector currentDiskPositions;
       private static PositionSelector currentPlayerPositions;
-      private static DWFrame currentFrame;
+      private static DWFrame currentFrame = null;
 
       public static void ParsePlaytestDirectory(string dirName)
       {
@@ -51,6 +51,7 @@ namespace DiskWars.parser
             {
                string line = "";
                Match mapMatch = null;
+               DWFrame tmpFrame = null;
 
                line = sr.ReadLine();
 
@@ -64,7 +65,17 @@ namespace DiskWars.parser
 
                while ((line = sr.ReadLine()) != null)
                {
+                  tmpFrame = currentFrame;
                   currentFrame = new DWFrame();
+
+                  tmpFrame.nextFrame = currentFrame;
+                  currentFrame.prevFrame = tmpFrame;
+
+                  if (tmpFrame == null)
+                  {
+                     currentFrame.isHead = true;
+                  }
+
                   parseTimeAndScore(line, currentFrame);
                   
                   while (sr.Peek() != 't')
@@ -73,7 +84,7 @@ namespace DiskWars.parser
 
                      parsePlayerAndDisk(line, currentFrame);
 
-                     // TODO: Use DWFrame and play within Dictionary
+                     // TODO: Use DWFrame and place within Dictionary
                   }
                }
             }
@@ -106,8 +117,8 @@ namespace DiskWars.parser
       {
          bool playerDead = false;
          int playerNum, playerRot;
-         Vector2 playerPos = new Vector2();
-         Vector2 diskPos = new Vector2();
+         int playerX, playerY;
+         int diskX, diskY;
          bool hasDisk, diskReturning, hasShield, hasSpeed;
 
          if (!playerRE.IsMatch(line))
@@ -126,25 +137,40 @@ namespace DiskWars.parser
          {
             Match playerMatch = playerRE.Match(line);
             playerNum = Convert.ToInt32(playerMatch.Groups["playerNum"].Value);
-            playerPos.X = Convert.ToInt32(playerMatch.Groups["posX"].Value);
-            playerPos.Y = Convert.ToInt32(playerMatch.Groups["posY"].Value);
+            playerX = Convert.ToInt32(playerMatch.Groups["posX"].Value);
+            playerY = Convert.ToInt32(playerMatch.Groups["posY"].Value);
             playerRot = Convert.ToInt32(playerMatch.Groups["rot"].Value);
 
-            diskPos.X = Convert.ToInt32(playerMatch.Groups["diskX"].Value);
-            diskPos.Y = Convert.ToInt32(playerMatch.Groups["diskY"].Value);
+            diskX = Convert.ToInt32(playerMatch.Groups["diskX"].Value);
+            diskY = Convert.ToInt32(playerMatch.Groups["diskY"].Value);
+            diskReturning = playerMatch.Groups["diskReturning"].Value.Equals("t");
 
             hasDisk = playerMatch.Groups["hasDisk"].Value.Equals("t");
-            diskReturning = playerMatch.Groups["diskReturning"].Value.Equals("t");
             hasShield = playerMatch.Groups["hasShield"].Value.Equals("t");
             hasSpeed = playerMatch.Groups["hasSpeed"].Value.Equals("t");
 
-            // TODO: Build the DWFrame
+            currentFrame.players[playerNum].xPos = playerX;
+            currentFrame.players[playerNum].yPos = playerY;
+            currentFrame.players[playerNum].rot = playerRot;
+            currentFrame.players[playerNum].hasDisk = hasDisk;
+            currentFrame.players[playerNum].hasShield = hasShield;
+            currentFrame.players[playerNum].hasSpeed = hasSpeed;
+            currentFrame.players[playerNum].isAlive = true;
+
+            currentFrame.disks[playerNum].xPos = diskX;
+            currentFrame.disks[playerNum].yPos = diskY;
+            currentFrame.disks[playerNum].isReturning = diskReturning;
          }
          else
          {
             playerNum = Convert.ToInt32(line.Substring(1, 1));
 
-            // TODO: Build the DWFrame
+            currentFrame.players[playerNum].xPos = -1;
+            currentFrame.players[playerNum].yPos = -1;
+            currentFrame.players[playerNum].isAlive = false;
+
+            currentFrame.disks[playerNum].xPos = -1;
+            currentFrame.disks[playerNum].yPos = -1;
          }
       }
 
