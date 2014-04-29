@@ -24,8 +24,9 @@ namespace DiskWars.parser
 
       // This is so gross.
       private static Dictionary<string, Dictionary<int, 
-       Dictionary<PositionSelector, Dictionary<PositionSelector, DWFrame>>>> 
-        knowledgeTree;
+       Dictionary<PositionSelector, Dictionary<PositionSelector, LinkedList<DWFrame>>>>> 
+        knowledgeTree = new Dictionary<string, Dictionary<int, 
+       Dictionary<PositionSelector, Dictionary<PositionSelector, LinkedList<DWFrame>>>>>();
 
       private static string currentMap;
       private static int currentPlayersAlive;
@@ -63,6 +64,10 @@ namespace DiskWars.parser
                mapMatch = mapRE.Match(line);
                currentMap = mapMatch.Groups["mapName"].Value;
 
+               knowledgeTree[currentMap] = 
+                  new Dictionary<int, Dictionary<PositionSelector, 
+                     Dictionary<PositionSelector, LinkedList<DWFrame>>>>();
+
                while ((line = sr.ReadLine()) != null)
                {
                   tmpFrame = currentFrame;
@@ -76,22 +81,53 @@ namespace DiskWars.parser
                      currentFrame.isHead = true;
                   }
 
-                  parseTimeAndScore(line, currentFrame);
+                  parseTimeAndScore(line);
                   
-                  while (sr.Peek() != 't')
+                  while (sr.Peek() != 't' && sr.Peek() != -1)
                   {
                      line = sr.ReadLine();
 
-                     parsePlayerAndDisk(line, currentFrame);
-
-                     // TODO: Use DWFrame and place within Dictionary
+                     parsePlayerAndDisk(line);
                   }
+
+                  putFrameInTree();
                }
             }
          }
       }
 
-      private static void parseTimeAndScore(string line, DWFrame currentFrame)
+      private static void putFrameInTree()
+      {
+         PositionSelector playerPS, diskPS;
+         currentFrame.updateQuadrants();
+
+         currentPlayersAlive = currentFrame.getNumPlayersAlive();
+         if (knowledgeTree[currentMap][currentPlayersAlive] == null)
+         {
+            knowledgeTree[currentMap][currentPlayersAlive] = 
+               new Dictionary<PositionSelector,
+                  Dictionary<PositionSelector, 
+                  LinkedList<DWFrame>>>();
+         }
+
+         diskPS = currentFrame.playerQuadrants;
+         if (knowledgeTree[currentMap][currentPlayersAlive][diskPS] == null)
+         {
+            knowledgeTree[currentMap][currentPlayersAlive][diskPS] = new 
+               Dictionary<PositionSelector, LinkedList<DWFrame>>();
+         }
+
+         playerPS = currentFrame.playerQuadrants;
+         if (knowledgeTree[currentMap][currentPlayersAlive][diskPS][playerPS] == null)
+         {
+            knowledgeTree[currentMap][currentPlayersAlive][diskPS][playerPS] = 
+               new LinkedList<DWFrame>();
+         }
+
+         knowledgeTree[currentMap][currentPlayersAlive][diskPS][playerPS].AddLast(currentFrame);
+      }
+
+      private static void parseTimeAndScore(string line)
       {
          if (!timeRE.IsMatch(line))
          {
@@ -113,7 +149,7 @@ namespace DiskWars.parser
          }
       }
 
-      private static void parsePlayerAndDisk(string line, DWFrame currentFrame)
+      private static void parsePlayerAndDisk(string line)
       {
          bool playerDead = false;
          int playerNum, playerRot;
@@ -183,7 +219,7 @@ namespace DiskWars.parser
       /// <param name="mapName">The name of the map</param>
       /// <returns>Ugly Dictionary. You don't want to use this alone.</returns>
       public static Dictionary<int, Dictionary<PositionSelector,
-       Dictionary<PositionSelector, DWFrame>>> Map(string mapName) 
+       Dictionary<PositionSelector, LinkedList<DWFrame>>>> Map(string mapName) 
       {
          currentMap = mapName;
          return knowledgeTree[currentMap];
@@ -196,8 +232,8 @@ namespace DiskWars.parser
       /// </summary>
       /// <param name="playersAlive">How many players are living?</param>
       /// <returns>Ugly Dictionary. You don't to use this alone.</returns>
-      public static Dictionary<PositionSelector, Dictionary<PositionSelector, 
-       DWFrame>> PlayersAlive(int playersAlive) 
+      public static Dictionary<PositionSelector, Dictionary<PositionSelector,
+       LinkedList<DWFrame>>> PlayersAlive(int playersAlive) 
       {
          currentPlayersAlive = playersAlive;
          return knowledgeTree[currentMap][currentPlayersAlive];
@@ -209,9 +245,10 @@ namespace DiskWars.parser
       /// for a given set of game conditions. This narrows the focus down by
       /// the set of positions where disks are.
       /// </summary>
-      /// <param name="positions">The positions of disks in order of player</param>
+      /// <param name="positions">The positions of disks in order of player, 
+      /// just separated by commas, no need to package them</param>
       /// <returns>Ugly Dictionary. You don't to use this alone.</returns>
-      public static Dictionary<PositionSelector, DWFrame> 
+      public static Dictionary<PositionSelector, LinkedList<DWFrame>> 
        DisksInRegions(params Vector2[] positions)
       {
          currentDiskPositions = positions;
@@ -225,11 +262,12 @@ namespace DiskWars.parser
       /// for a given set of game conditions. This narrows the focus down by
       /// the set of positions where players are.
       /// </summary>
-      /// <param name="positions">The positions of players in order of player</param>
+      /// <param name="positions">The positions of players in order of player, 
+      /// just separated by commas, no need to package them</param>
       /// <returns>The frame corresponding to the situation described.
       /// Not particularly useful by itself but gives access to the frames
       /// following it and the frames preceding it.</returns>
-      public static DWFrame PlayersInRegions(params Vector2[] positions)
+      public static LinkedList<DWFrame> PlayersInRegions(params Vector2[] positions)
       {
          currentPlayerPositions = positions;
          return knowledgeTree[currentMap][currentPlayersAlive]

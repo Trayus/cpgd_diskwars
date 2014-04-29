@@ -10,11 +10,15 @@ namespace DiskWars.parser
    {
       public bool isHead { set; get; }
       public int timeLeft { set; get; }
+
       public PlayerData[] players;
       public DiskData[] disks;
 
       public DWFrame nextFrame { set; get; }
       public DWFrame prevFrame { set; get; }
+
+      public PositionSelector playerQuadrants;
+      public PositionSelector diskQuadrants;
 
       public DWFrame()
       {
@@ -73,6 +77,26 @@ namespace DiskWars.parser
          }
 
          return new Vector2(disks[playerNum].xPos, disks[playerNum].yPos);
+      }
+
+      public int getNumPlayersAlive()
+      {
+         int playersAlive = 0;
+
+         for (int i = 0; i < players.Length; i++)
+         {
+            if (players[i].isAlive && isPlayerActive(i))
+            {
+               playersAlive++;
+            }
+         }
+
+         return playersAlive;
+      }
+
+      public void updateQuadrants()
+      {
+
       }
    }
 }
