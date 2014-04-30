@@ -15,17 +15,5 @@ namespace DiskWars.parser
          hasShield,
          hasSpeed,
          isAlive;
-
-      public PlayerData(int _)
-      {
-         xPos = -999;
-         yPos = -999;
-         rot = -999;
-
-         hasDisk = false;
-         hasShield = false;
-         hasSpeed = false;
-         isAlive = false;
-      }
    }
 }

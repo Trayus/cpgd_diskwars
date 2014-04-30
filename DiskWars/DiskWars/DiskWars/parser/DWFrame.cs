@@ -40,9 +40,10 @@ namespace DiskWars.parser
          diskQuadrants = new PositionSelector();
       }
 
+      // TODO: This method is sketchy...
       public bool isPlayerActive(int playerNum)
       {
-         return players[playerNum].xPos != -999;
+         return players[playerNum].xPos != 0;
       }
 
       public bool isPlayerAlive(int playerNum)

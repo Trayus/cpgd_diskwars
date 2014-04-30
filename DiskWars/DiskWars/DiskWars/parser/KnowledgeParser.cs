@@ -41,6 +41,35 @@ namespace DiskWars.parser
    ///      Don't put in positions for players that are dead or inactive.
    ///                                    
    ///   4. Do whatever you wanna do with the frames you now have :-).
+   ///   
+   /// Ok so you have your linked list of DWFrames, what the heck is a DW Frame?!
+   /// DWFrame gives you access to:
+   ///   - Whether or not this frame is the first frame in the playtest (isHead)
+   ///   - How much time is left in the game at this point (timeLeft)
+   ///   - Access to the players, each of which contains:
+   ///      - player x position (xPos)
+   ///      - player y position (yPos)
+   ///      - player rotation (rot)
+   ///      - if the player has their disk (hasDisk)
+   ///      - if the player has the shield power-up (hasShield)
+   ///      - if the player has the speed power-up (hasSpeed)
+   ///      - ***** if the player is actually alive (isAlive) *****
+   ///   - Access to the disks, each of which contains:
+   ///      - disk x position (xPos)
+   ///      - disk y position (yPos)
+   ///      - if the disk is trying to return to the player (isReturning)
+   ///   - The next frame from the playtest (nextFrame)
+   ///   - The preceding frame from the playtest (prevFrame)
+   ///      - prevFrame will be null if this was the first frame of the playtest
+   ///   - PositionSelectors for players and disks, these store the quadrant numbers
+   ///   and actual positions of the players and disks
+   ///      - positions array holds actual positions
+   ///      - activeQuadrants holds the quadrant numbers
+   ///   - Asking if a given player is active in the game (isPlayerActive)
+   ///   - Asking if a given player is alive (isPlayerAlive)
+   ///   - Getting a player position as a Vector2 (getPlayerPosition)
+   ///   - Getting a disk position as a Vector2 (getDiskPosition)
+   ///   - Getting the number of players currently alive (getNumPlayersAlive)
    /// </summary>
    static class KnowledgeParser
    {
