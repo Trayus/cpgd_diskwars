@@ -115,3 +115,5 @@ C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Cont
 C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\sound\dw_spawn.xnb
 C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\sound\dw_wallhit.xnb
 C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\sound\4614(2).wma
+C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\maps\Box.xnb
+C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\maps\Ring.xnb

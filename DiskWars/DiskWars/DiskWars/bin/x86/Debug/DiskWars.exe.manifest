@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="DiskWars.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity name="DiskWars.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <description asmv2:iconFile="Game.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DiskWars.exe" size="79360">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DiskWars.exe" size="82432">
       <assemblyIdentity name="DiskWars" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>jILW2SQAOn5oq/iFk8Oy9ThZ+nQ=</dsig:DigestValue>
+        <dsig:DigestValue>urue8nUzCM208LWPEaG53PjIUZE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -167,13 +167,22 @@
       <dsig:DigestValue>cjeKxWbuxm2rxM59ejpHfVLg9wc=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="Content\maps\Box.xnb" size="8867">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ef9Tzw7EDR8o6t39ooLYkfGtUGA=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Content\maps\Breakout.xnb" size="8867">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>l2qX0CtKY8Jwp6BqgLPKDZ2ES+k=</dsig:DigestValue>
+      <dsig:DigestValue>y9VDCP3PmWLz5t+j1UJzBlHx4B4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\maps\placeholder.xnb" size="8867">
@@ -183,6 +192,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>6ZXP4iprlIfZ+M4jiNi+OCC5hcQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\maps\Ring.xnb" size="8867">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>BUaVhYiRQ9vlpRjQBsWEiGXMZNQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\maps\testmap.xnb" size="8867">
@@ -200,7 +218,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>vNLH1RFn9VMcgwCw/dZU02BmuSI=</dsig:DigestValue>
+      <dsig:DigestValue>G2ho8CzohsXQaX3IAvY8tTrfvlI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\menufont.xnb" size="91310">
@@ -497,7 +515,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>GyPExlRaEoVnCU430Ez6FE6R2e4=</dsig:DigestValue>
+      <dsig:DigestValue>2egkJrEofIhhXj+r1EmXZNoLCtc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\tiles\stickwall.xnb" size="4283">

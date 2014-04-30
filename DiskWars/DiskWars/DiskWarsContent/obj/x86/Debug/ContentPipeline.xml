@@ -215,7 +215,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\maps\WallWorld.xnb</Output>
-      <Time>2014-04-10T17:16:23.3757548-07:00</Time>
+      <Time>2014-04-11T17:18:23.2384078-07:00</Time>
     </Item>
     <Item>
       <Source>tiles\testset_bounce.png</Source>
@@ -260,7 +260,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\maps\Arena.xnb</Output>
-      <Time>2014-04-10T17:13:29.8418292-07:00</Time>
+      <Time>2014-04-11T16:51:45.3440135-07:00</Time>
     </Item>
     <Item>
       <Source>maps\Breakout.png</Source>
@@ -269,7 +269,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\maps\Breakout.xnb</Output>
-      <Time>2014-04-01T20:05:24.2319303-07:00</Time>
+      <Time>2014-04-11T17:18:45.3556729-07:00</Time>
     </Item>
     <Item>
       <Source>player\orangepowerup.png</Source>
@@ -314,7 +314,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\tiles\passwall.xnb</Output>
-      <Time>2014-04-08T20:46:29.0343654-07:00</Time>
+      <Time>2014-04-11T17:14:49.086159-07:00</Time>
     </Item>
     <Item>
       <Source>player\powerbig.png</Source>
@@ -496,6 +496,24 @@
       <Options>None</Options>
       <Output>C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\sound\dw_wallhit.xnb</Output>
       <Time>2014-04-10T17:08:35.9190178-07:00</Time>
+    </Item>
+    <Item>
+      <Source>maps\Box.png</Source>
+      <Name>maps\Box</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\maps\Box.xnb</Output>
+      <Time>2014-04-11T17:19:31.0292853-07:00</Time>
+    </Item>
+    <Item>
+      <Source>maps\Ring.png</Source>
+      <Name>maps\Ring</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Tim\Desktop\cpgd_diskwars\DiskWars\DiskWars\DiskWars\bin\x86\Debug\Content\maps\Ring.xnb</Output>
+      <Time>2014-04-11T17:25:52.4951039-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

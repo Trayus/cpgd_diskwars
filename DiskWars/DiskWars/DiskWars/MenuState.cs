@@ -31,11 +31,17 @@ namespace DiskWars
         public override void update(float gameTime)
         {
             int psel = selection;
-            if (OnceInput.DDOWN(1) || OnceInput.DOWN() || OnceInput.LSTICKDOWN(1))
+            if (OnceInput.DDOWN(1) || OnceInput.DOWN() || OnceInput.LSTICKDOWN(1) ||
+                OnceInput.DDOWN(2) || OnceInput.DOWN() || OnceInput.LSTICKDOWN(2) ||
+                OnceInput.DDOWN(3) || OnceInput.DOWN() || OnceInput.LSTICKDOWN(3) ||
+                OnceInput.DDOWN(4) || OnceInput.DOWN() || OnceInput.LSTICKDOWN(4))
             {
                 selection++;
             }
-            if (OnceInput.DUP(1) || OnceInput.UP() || OnceInput.LSTICKUP(1))
+            if (OnceInput.DUP(1) || OnceInput.UP() || OnceInput.LSTICKUP(1) ||
+                OnceInput.DUP(2) || OnceInput.UP() || OnceInput.LSTICKUP(2) ||
+                OnceInput.DUP(3) || OnceInput.UP() || OnceInput.LSTICKUP(3) ||
+                OnceInput.DUP(4) || OnceInput.UP() || OnceInput.LSTICKUP(4))
             {
                 selection--;
             }
@@ -48,7 +54,7 @@ namespace DiskWars
                 maps[selection].setColor(Color.LightGray);
             }
 
-            if (OnceInput.A(1) || OnceInput.ENTER())
+            if (OnceInput.A(1) || OnceInput.A(2) || OnceInput.A(3) || OnceInput.A(4) || OnceInput.ENTER())
             {
                 GameState.mapname = "maps/" + maps[selection].getText();
                 Game1.goToState(State.GAME);

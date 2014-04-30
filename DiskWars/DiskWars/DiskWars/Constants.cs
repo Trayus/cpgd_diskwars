@@ -7,7 +7,7 @@ namespace DiskWars
 {
     class Constants
     {
-        public static bool DEBUG = false;
+        public static bool DEBUG = true;
         public static bool WRAP = false;
         public static bool BOUNCETOSLOW = false;
 
