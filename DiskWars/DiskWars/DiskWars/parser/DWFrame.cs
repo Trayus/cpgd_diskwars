@@ -20,6 +20,8 @@ namespace DiskWars.parser
       public PositionSelector playerQuadrants;
       public PositionSelector diskQuadrants;
 
+      public int[] scores;
+
       public DWFrame()
       {
          players = new PlayerData[] {
@@ -38,6 +40,8 @@ namespace DiskWars.parser
 
          playerQuadrants = new PositionSelector();
          diskQuadrants = new PositionSelector();
+
+         scores = new int[] { 0, 0, 0, 0 };
       }
 
       // TODO: This method is sketchy...

@@ -67,6 +67,7 @@ namespace DiskWars.parser
    ///      - activeQuadrants holds the quadrant numbers
    ///   - Asking if a given player is active in the game (isPlayerActive)
    ///   - Asking if a given player is alive (isPlayerAlive)
+   ///   - Getting the current scores for each player (scores)
    ///   - Getting a player position as a Vector2 (getPlayerPosition)
    ///   - Getting a disk position as a Vector2 (getDiskPosition)
    ///   - Getting the number of players currently alive (getNumPlayersAlive)
@@ -217,14 +218,22 @@ namespace DiskWars.parser
          try
          {
             currentFrame.timeLeft = Convert.ToInt32(timeMatch.Groups["timeMS"].Value);
+            currentFrame.scores[0] = (int)Decimal.Parse(timeMatch.Groups["p1Score"].Value, 
+               NumberStyles.Number);
+            currentFrame.scores[1] = (int)Decimal.Parse(timeMatch.Groups["p2Score"].Value,
+               NumberStyles.Number);
+            currentFrame.scores[2] = (int)Decimal.Parse(timeMatch.Groups["p3Score"].Value,
+               NumberStyles.Number);
+            currentFrame.scores[3] = (int)Decimal.Parse(timeMatch.Groups["p4Score"].Value,
+               NumberStyles.Number);
          }
          catch (FormatException e)
          {
-            Console.WriteLine("Input string is not a sequence of digits.");
+            Console.WriteLine("Input string is not a sequence of digits. " + e.Message);
          }
          catch (OverflowException e)
          {
-            Console.WriteLine("The number cannot fit in an Int32.");
+            Console.WriteLine("The number cannot fit in an Int32. " + e.Message);
          }
       }
 
