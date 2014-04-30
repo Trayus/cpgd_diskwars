@@ -5,18 +5,52 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Xna.Framework;
 using System.IO;
+using System.Globalization;
 
 namespace DiskWars.parser
 {
+   /// <summary>
+   /// Knowledge Parser
+   /// Takes in text files and builds an underlying tree that can be queried.
+   /// Tree is built like so:
+   /// Map Name
+   ///   Number of players alive
+   ///      The positions of the disks on the map
+   ///         The positions of the players on the map
+   ///            A list of frames that describe that situation (with links to 
+   ///            the frames that preceded and followed the given frame)
+   ///            
+   /// Recommended workflow:
+   ///   1. Call ParsePlaytestDirectory on a directory full of playtest files
+   ///   OR
+   ///   1. Call ParsePlaytest on individual files, trying to parse as many files as
+   ///   possible before step 2
+   ///   
+   ///   2. Gather the information needed for querying the knowledge base
+   ///      - Map name
+   ///      - Number of players alive
+   ///      - The positions of the disks
+   ///      - The positions of the players
+   ///      
+   ///   3. Call the suggested method chain of:
+   ///      LinkedList<DWFrame> = KnowledgeParser
+   ///                                    .Map(mapName)
+   ///                                    .PlayersAlive(numPlayersAlive)
+   ///                                    .DiskPositions(disk1.pos, disk2.pos, ...)
+   ///                                    .PlayerPositions(p1.pos, p2.pos, ...);
+   ///      Don't put in positions for players that are dead or inactive.
+   ///                                    
+   ///   4. Do whatever you wanna do with the frames you now have :-).
+   /// </summary>
    static class KnowledgeParser
    {
-      private static string mapPattern = @"^maps/(<mapName>[Arena|Box|Breakout|Ring|WallWorld])";
+      private static string mapPattern = @"maps/(?<mapName>\bArena|Box|Breakout|Ring|WallWorld\b)";
       
       // Scores have .+ because of negative numbers, \d doesn't work
-      private static string timePattern = @"^t = (<timeMS>\d+) (<p1Score>.+) (<p2Score>.+) (<p3Score>.+) (<p4Score>.+)";
+      private static string timePattern = @"t = (?<timeMS>\d+) (?<p1Score>.+) (?<p2Score>.+) (?<p3Score>.+) (?<p4Score>.+)";
       
       // Rotation has .+ because of negative numbers, \d doesn't work
-      private static string playerPattern = @"^p(<playerNum>\d) pos \<(<posX>\d+),(<posY>\d+)\> rot (<rot>.+) disk \<(<diskX>\d+),(<diskY>\d+)\> holding (<hasDisk>[t|f]) returning (<diskReturning>[t|f]) shield (<hasShield>[t|f]) speed (<hasSpeed>[t|f])";
+      private static string playerPattern = @"p(?<playerNum>\d) pos \<(?<posX>\d+),(?<posY>\d+)\> rot (?<rot>.+) disk \<(?<diskX>\d+),(?<diskY>\d+)\> holding (?<hasDisk>[t|f]) returning (?<diskReturning>[tf]) shield (?<hasShield>[tf]) speed (?<hasSpeed>[tf])";
 
       private static Regex mapRE = new Regex(mapPattern);
       private static Regex timeRE = new Regex(timePattern);
@@ -24,9 +58,10 @@ namespace DiskWars.parser
 
       // This is so gross.
       private static Dictionary<string, Dictionary<int, 
-       Dictionary<PositionSelector, Dictionary<PositionSelector, LinkedList<DWFrame>>>>> 
-        knowledgeTree = new Dictionary<string, Dictionary<int, 
-       Dictionary<PositionSelector, Dictionary<PositionSelector, LinkedList<DWFrame>>>>>();
+       Dictionary<PositionSelector, Dictionary<PositionSelector, 
+       LinkedList<DWFrame>>>>> knowledgeTree = 
+         new Dictionary<string, Dictionary<int, Dictionary<PositionSelector, 
+          Dictionary<PositionSelector, LinkedList<DWFrame>>>>>();
 
       private static string currentMap;
       private static int currentPlayersAlive;
@@ -34,6 +69,10 @@ namespace DiskWars.parser
       private static PositionSelector currentPlayerPositions;
       private static DWFrame currentFrame = null;
 
+      /// <summary>
+      /// Parse a whole directory of recorded playtests.
+      /// </summary>
+      /// <param name="dirName">The directory path</param>
       public static void ParsePlaytestDirectory(string dirName)
       {
          string[] filePaths = Directory.GetFiles(dirName);
@@ -44,6 +83,10 @@ namespace DiskWars.parser
          }
       }
 
+      /// <summary>
+      /// Parse a single playtest.
+      /// </summary>
+      /// <param name="fileName">The path to the playtest file</param>
       public static void ParsePlaytest(string fileName) 
       {
          if (File.Exists(fileName))
@@ -73,13 +116,16 @@ namespace DiskWars.parser
                   tmpFrame = currentFrame;
                   currentFrame = new DWFrame();
 
-                  tmpFrame.nextFrame = currentFrame;
-                  currentFrame.prevFrame = tmpFrame;
-
                   if (tmpFrame == null)
                   {
                      currentFrame.isHead = true;
                   }
+                  else
+                  {
+                     tmpFrame.nextFrame = currentFrame;
+                  }
+
+                  currentFrame.prevFrame = tmpFrame;
 
                   parseTimeAndScore(line);
                   
@@ -94,6 +140,10 @@ namespace DiskWars.parser
                }
             }
          }
+         else
+         {
+            throw new FileNotFoundException("File not found! " + Directory.GetCurrentDirectory() + fileName);
+         }
       }
 
       private static void putFrameInTree()
@@ -102,7 +152,7 @@ namespace DiskWars.parser
          currentFrame.updateQuadrants();
 
          currentPlayersAlive = currentFrame.getNumPlayersAlive();
-         if (knowledgeTree[currentMap][currentPlayersAlive] == null)
+         if (!knowledgeTree[currentMap].ContainsKey(currentPlayersAlive))
          {
             knowledgeTree[currentMap][currentPlayersAlive] = 
                new Dictionary<PositionSelector,
@@ -111,14 +161,14 @@ namespace DiskWars.parser
          }
 
          diskPS = currentFrame.playerQuadrants;
-         if (knowledgeTree[currentMap][currentPlayersAlive][diskPS] == null)
+         if (!knowledgeTree[currentMap][currentPlayersAlive].ContainsKey(diskPS))
          {
             knowledgeTree[currentMap][currentPlayersAlive][diskPS] = new 
                Dictionary<PositionSelector, LinkedList<DWFrame>>();
          }
 
          playerPS = currentFrame.playerQuadrants;
-         if (knowledgeTree[currentMap][currentPlayersAlive][diskPS][playerPS] == null)
+         if (!knowledgeTree[currentMap][currentPlayersAlive][diskPS].ContainsKey(playerPS))
          {
             knowledgeTree[currentMap][currentPlayersAlive][diskPS][playerPS] = 
                new LinkedList<DWFrame>();
@@ -172,10 +222,10 @@ namespace DiskWars.parser
          if (!playerDead)
          {
             Match playerMatch = playerRE.Match(line);
-            playerNum = Convert.ToInt32(playerMatch.Groups["playerNum"].Value);
+            playerNum = Convert.ToInt32(playerMatch.Groups["playerNum"].Value) - 1;
             playerX = Convert.ToInt32(playerMatch.Groups["posX"].Value);
             playerY = Convert.ToInt32(playerMatch.Groups["posY"].Value);
-            playerRot = Convert.ToInt32(playerMatch.Groups["rot"].Value);
+            playerRot = (int)Decimal.Parse(playerMatch.Groups["rot"].Value, NumberStyles.Number);
 
             diskX = Convert.ToInt32(playerMatch.Groups["diskX"].Value);
             diskY = Convert.ToInt32(playerMatch.Groups["diskY"].Value);
@@ -199,7 +249,7 @@ namespace DiskWars.parser
          }
          else
          {
-            playerNum = Convert.ToInt32(line.Substring(1, 1));
+            playerNum = Convert.ToInt32(line.Substring(1, 1)) - 1;
 
             currentFrame.players[playerNum].xPos = -1;
             currentFrame.players[playerNum].yPos = -1;
@@ -240,16 +290,14 @@ namespace DiskWars.parser
       }
 
       /// <summary>
-      /// ** GIVE POSITIONS IN ORDER OF PLAYER **
       /// The third of four in the chain of methods to return a list of frames
       /// for a given set of game conditions. This narrows the focus down by
       /// the set of positions where disks are.
       /// </summary>
-      /// <param name="positions">The positions of disks in order of player, 
-      /// just separated by commas, no need to package them</param>
+      /// <param name="positions">The positions of disks, order doesn't matter</param>
       /// <returns>Ugly Dictionary. You don't to use this alone.</returns>
       public static Dictionary<PositionSelector, LinkedList<DWFrame>> 
-       DisksInRegions(params Vector2[] positions)
+       DiskPositions(params Vector2[] positions)
       {
          currentDiskPositions = positions;
          return knowledgeTree[currentMap][currentPlayersAlive]
@@ -257,17 +305,16 @@ namespace DiskWars.parser
       }
 
       /// <summary>
-      /// ** GIVE POSITIONS IN ORDER OF PLAYER **
       /// The four of four in the chain of methods to return a frame
       /// for a given set of game conditions. This narrows the focus down by
       /// the set of positions where players are.
       /// </summary>
-      /// <param name="positions">The positions of players in order of player, 
-      /// just separated by commas, no need to package them</param>
+      /// <param name="positions">The positions of players, order doesn't matter</param>
       /// <returns>The frame corresponding to the situation described.
-      /// Not particularly useful by itself but gives access to the frames
-      /// following it and the frames preceding it.</returns>
-      public static LinkedList<DWFrame> PlayersInRegions(params Vector2[] positions)
+      /// It can be used to query for more specific information like player positions,
+      /// disk positions, and gives access to the frames following it and the 
+      /// frames preceding it.</returns>
+      public static LinkedList<DWFrame> PlayerPositions(params Vector2[] positions)
       {
          currentPlayerPositions = positions;
          return knowledgeTree[currentMap][currentPlayersAlive]

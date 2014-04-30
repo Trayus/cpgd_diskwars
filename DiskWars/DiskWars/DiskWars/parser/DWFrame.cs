@@ -35,6 +35,9 @@ namespace DiskWars.parser
             new DiskData(),
             new DiskData()
          };
+
+         playerQuadrants = new PositionSelector();
+         diskQuadrants = new PositionSelector();
       }
 
       public bool isPlayerActive(int playerNum)
@@ -96,7 +99,22 @@ namespace DiskWars.parser
 
       public void updateQuadrants()
       {
+         List<Vector2> positions = new List<Vector2>(), 
+            diskPositions = new List<Vector2>();
 
+         for (int i = 0; i < players.Length; i++)
+         {
+            PlayerData p = players[i];
+
+            if (p.isAlive && isPlayerActive(i))
+            {
+               positions.Add(new Vector2(p.xPos, p.yPos));
+               diskPositions.Add(new Vector2(disks[i].xPos, disks[i].yPos));
+            }
+         }
+
+         playerQuadrants.update(positions.ToArray());
+         diskQuadrants.update(diskPositions.ToArray());
       }
    }
 }

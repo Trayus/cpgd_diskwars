@@ -16,7 +16,7 @@ namespace DiskWars.parser
          hasSpeed,
          isAlive;
 
-      public PlayerData()
+      public PlayerData(int _)
       {
          xPos = -999;
          yPos = -999;

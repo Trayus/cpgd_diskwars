@@ -150,8 +150,10 @@
     <Compile Include="helpers\Timers.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MenuState.cs" />
+    <Compile Include="parser\DiskData.cs" />
     <Compile Include="parser\DWFrame.cs" />
     <Compile Include="parser\KnowledgeParser.cs" />
+    <Compile Include="parser\PlayerData.cs" />
     <Compile Include="parser\PositionSelector.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PowerUp.cs" />
