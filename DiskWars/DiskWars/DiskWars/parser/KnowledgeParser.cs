@@ -67,6 +67,7 @@ namespace DiskWars.parser
    ///      - activeQuadrants holds the quadrant numbers
    ///   - Asking if a given player is active in the game (isPlayerActive)
    ///   - Asking if a given player is alive (isPlayerAlive)
+   ///   - Getting the current scores for each player (scores)
    ///   - Getting a player position as a Vector2 (getPlayerPosition)
    ///   - Getting a disk position as a Vector2 (getDiskPosition)
    ///   - Getting the number of players currently alive (getNumPlayersAlive)
