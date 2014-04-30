@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+
+namespace DiskWars.parser
+{
+   class PositionSelector : IEquatable<PositionSelector>
+   {
+      private Vector2[] positions;
+      private List<int> activeQuadrants;
+      private static int MAP_WIDTH = 1920;
+      private static int MAP_HEIGHT = 1080;
+      private static int HORIZ_QUADRANTS = 10;
+      private static int VERT_QUADRANTS = 5;
+
+      public PositionSelector()
+      {
+         positions = null;
+      }
+
+      public PositionSelector(Vector2[] positions)
+      {
+         this.positions = positions;
+         GenerateQuadrants();
+      }
+
+      public static implicit operator PositionSelector(Vector2[] positions)
+      {
+         return new PositionSelector(positions);
+      }
+
+      public bool Equals(PositionSelector p2)
+      {
+         return p2.activeQuadrants.Count == this.activeQuadrants.Count &&
+            p2.activeQuadrants.SequenceEqual(this.activeQuadrants);
+      }
+
+      private void GenerateQuadrants()
+      {
+         activeQuadrants = new List<int>();
+
+         int horizOffset = MAP_WIDTH / HORIZ_QUADRANTS;
+         int vertOffset = MAP_HEIGHT / VERT_QUADRANTS;
+         int row, col;
+
+         foreach (Vector2 pos in positions)
+         {
+            row = Convert.ToInt32(pos.Y / vertOffset);
+            col = Convert.ToInt32(pos.X / horizOffset);
+            activeQuadrants.Add((row > 0 ? row : 0) * HORIZ_QUADRANTS + 
+               col);
+         }
+         
+         // Make sure arrays are ordered!
+         this.activeQuadrants.Sort();
+      }
+
+      public void update(Vector2[] positions)
+      {
+         this.positions = positions;
+         GenerateQuadrants();
+      }
+   }
+}

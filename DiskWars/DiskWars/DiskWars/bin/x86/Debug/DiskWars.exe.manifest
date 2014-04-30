@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DiskWars.exe" size="82432">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DiskWars.exe" size="91136">
       <assemblyIdentity name="DiskWars" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>urue8nUzCM208LWPEaG53PjIUZE=</dsig:DigestValue>
+        <dsig:DigestValue>UfLmbXBqDYxlaq0dyd/uvAFKs4U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -137,7 +137,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>FKSzxTtfPDP88ysujwieY4GM7B8=</dsig:DigestValue>
+      <dsig:DigestValue>w/06BA78pPmR1gH5sb/bp3epU/g=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\graphics\font.xnb" size="20142">
@@ -155,7 +155,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>tBBbIyQYU5KIE0A01S8Ze0P+naU=</dsig:DigestValue>
+      <dsig:DigestValue>IG9rP/9+hSYndstRmaiN/FG6zgw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\maps\Arena.xnb" size="8867">
@@ -380,7 +380,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>TvlB4c0Ai93n6yBt71ww0Lqulys=</dsig:DigestValue>
+      <dsig:DigestValue>nu8poJjmRbI8jA//QrGK7wwHDEU=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\sound\4614(2).xnb" size="125">

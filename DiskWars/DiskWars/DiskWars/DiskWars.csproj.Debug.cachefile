@@ -42,6 +42,8 @@ Content\player\spikeoverlay.xnb
 Content\player\powershield.xnb
 Content\player\powerspeed.xnb
 Content\player\shield.xnb
+Content\maps\Box.xnb
+Content\maps\Ring.xnb
 Content\sound\4614(2).xnb
 Content\sound\dw_breakoff.xnb
 Content\sound\dw_breakon.xnb
@@ -53,6 +55,4 @@ Content\sound\dw_shoot.xnb
 Content\sound\dw_slowhit.xnb
 Content\sound\dw_spawn.xnb
 Content\sound\dw_wallhit.xnb
-Content\maps\Box.xnb
-Content\maps\Ring.xnb
 Content\sound\4614(2).wma

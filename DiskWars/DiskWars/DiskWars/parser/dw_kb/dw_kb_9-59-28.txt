@@ -1,0 +1,511 @@
+maps/WallWorld
+t = 149992 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149976 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149960 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149944 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149928 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149912 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149896 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149880 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149864 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149848 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149832 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149816 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149800 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149784 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149768 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149752 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149736 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149720 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149704 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149688 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149672 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149656 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149640 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149624 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149608 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149592 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149576 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149560 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149544 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149528 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149512 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149496 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149480 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149464 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149448 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149432 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149416 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149400 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149384 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149368 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149352 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149336 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149320 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149304 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149288 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149272 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149256 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149240 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149224 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149208 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149192 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149176 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149160 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149144 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149128 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149112 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149096 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149080 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149064 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149048 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149032 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149016 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 149000 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148984 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148968 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148952 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148936 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148920 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148904 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148888 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148872 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148856 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148840 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148824 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148808 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148792 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148776 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148760 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148744 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148728 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148712 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148696 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148680 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148664 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148648 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148632 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148616 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148600 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148584 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148568 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148552 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148536 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148520 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148504 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148488 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148472 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148456 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148440 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148424 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148408 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148392 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
+t = 148376 0 0 0 0
+p1 pos <416,192> rot 0 disk <416,212> holding t returning f shield f speed f
+p2 pos <416,896> rot 0 disk <416,916> holding t returning f shield f speed f
+p3 pos <1472,192> rot 0 disk <1472,212> holding t returning f shield f speed f
+p4 pos <1472,896> rot 0 disk <1472,916> holding t returning f shield f speed f
