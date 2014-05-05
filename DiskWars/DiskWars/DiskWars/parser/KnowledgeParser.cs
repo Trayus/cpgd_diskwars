@@ -263,7 +263,7 @@ namespace DiskWars.parser
             playerNum = Convert.ToInt32(playerMatch.Groups["playerNum"].Value) - 1;
             playerX = Convert.ToInt32(playerMatch.Groups["posX"].Value);
             playerY = Convert.ToInt32(playerMatch.Groups["posY"].Value);
-            playerRot = (int)Decimal.Parse(playerMatch.Groups["rot"].Value, NumberStyles.Number);
+            playerRot = (int)Decimal.Parse(playerMatch.Groups["rot"].Value, NumberStyles.Float);
 
             diskX = Convert.ToInt32(playerMatch.Groups["diskX"].Value);
             diskY = Convert.ToInt32(playerMatch.Groups["diskY"].Value);
