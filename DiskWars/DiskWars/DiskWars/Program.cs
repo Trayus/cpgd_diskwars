@@ -11,7 +11,8 @@ namespace DiskWars
         /// </summary>
         static void Main(string[] args)
         {
-           KnowledgeParser.ParsePlaytestDirectory(@"C:\Users\Tag\Documents\Projects\cpgd_diskwars\DiskWars\DiskWars\DiskWars\parser\dw_kb");
+           // KnowledgeParser kp = new KnowledgeParser();
+           // kp.ParsePlaytestDirectory(@"C:\Users\Tag\Documents\Projects\cpgd_diskwars\DiskWars\DiskWars\DiskWars\parser\dw_kb");
 
             using (Game1 game = new Game1())
             {
