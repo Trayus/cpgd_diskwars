@@ -80,7 +80,7 @@ namespace DiskWars.parser
       private static string timePattern = @"t = (?<timeMS>\d+) (?<p1Score>.+) (?<p2Score>.+) (?<p3Score>.+) (?<p4Score>.+)";
       
       // Rotation has .+ because of negative numbers, \d doesn't work
-      private static string playerPattern = @"p(?<playerNum>\d) pos \<(?<posX>\d+),(?<posY>\d+)\> rot (?<rot>.+) disk \<(?<diskX>\d+),(?<diskY>\d+)\> holding (?<hasDisk>[t|f]) returning (?<diskReturning>[tf]) shield (?<hasShield>[tf]) speed (?<hasSpeed>[tf])";
+      private static string playerPattern = @"p(?<playerNum>\d) pos \<(?<posX>\d+),(?<posY>\d+)\> rot (?<rot>.+) disk \<(?<diskX>-?\d+),(?<diskY>-?\d+)\> holding (?<hasDisk>[t|f]) returning (?<diskReturning>[tf]) shield (?<hasShield>[tf]) speed (?<hasSpeed>[tf])";
 
       private static Regex mapRE = new Regex(mapPattern);
       private static Regex timeRE = new Regex(timePattern);
@@ -240,8 +240,8 @@ namespace DiskWars.parser
       private static void parsePlayerAndDisk(string line)
       {
          bool playerDead = false;
-         int playerNum, playerRot;
-         int playerX, playerY;
+         int playerNum, playerX, playerY;
+         float playerRot;
          int diskX, diskY;
          bool hasDisk, diskReturning, hasShield, hasSpeed;
 
@@ -263,7 +263,7 @@ namespace DiskWars.parser
             playerNum = Convert.ToInt32(playerMatch.Groups["playerNum"].Value) - 1;
             playerX = Convert.ToInt32(playerMatch.Groups["posX"].Value);
             playerY = Convert.ToInt32(playerMatch.Groups["posY"].Value);
-            playerRot = (int)Decimal.Parse(playerMatch.Groups["rot"].Value, NumberStyles.Float);
+            playerRot = (float)Decimal.Parse(playerMatch.Groups["rot"].Value, NumberStyles.Float);
 
             diskX = Convert.ToInt32(playerMatch.Groups["diskX"].Value);
             diskY = Convert.ToInt32(playerMatch.Groups["diskY"].Value);

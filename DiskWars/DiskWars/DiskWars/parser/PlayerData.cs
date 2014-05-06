@@ -8,8 +8,9 @@ namespace DiskWars.parser
    struct PlayerData
    {
       public int xPos,
-         yPos,
-         rot;
+         yPos;
+
+      public float rot;
 
       public bool hasDisk,
          hasShield,
