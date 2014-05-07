@@ -352,6 +352,15 @@ namespace DiskWars.parser
       public  LinkedList<DWFrame> PlayerPositions(params Vector2[] positions)
       {
          currentPlayerPositions = positions;
+
+         if (!knowledgeTree.ContainsKey(currentMap)
+            || !knowledgeTree[currentMap].ContainsKey(currentPlayersAlive)
+            || !knowledgeTree[currentMap][currentPlayersAlive].ContainsKey(currentDiskPositions)
+            || !knowledgeTree[currentMap][currentPlayersAlive][currentDiskPositions].ContainsKey(currentPlayerPositions))
+         {
+            return new LinkedList<DWFrame>();
+         }
+
          return knowledgeTree[currentMap][currentPlayersAlive]
           [currentDiskPositions][currentPlayerPositions];
       }
