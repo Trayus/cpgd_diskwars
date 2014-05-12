@@ -11,6 +11,8 @@ namespace DiskWars
         public static bool WRAP = false;
         public static bool BOUNCETOSLOW = false;
 
+        public static float QUERY_TIME = 500f;
+
         public static int MAPX = 62;
         public static int MAPY = 35;
         public static float GAMESCALE = 1;

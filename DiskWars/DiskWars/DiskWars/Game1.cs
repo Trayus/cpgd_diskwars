@@ -11,6 +11,8 @@ using Microsoft.Xna.Framework.Media;
 
 using Graphics2D;
 using Helpers;
+using DiskWars.parser;
+
 
 namespace DiskWars
 {
@@ -58,6 +60,7 @@ namespace DiskWars
                 this.Components.Add(new RenderingEngine(this, 1920, 1080));
             }
 
+            KnowledgeParser.ParsePlaytest("../../../parser/dw_kb/dw_kb_0-2-46.txt");
         }
 
         /// <summary>

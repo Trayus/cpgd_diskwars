@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Media;
 
 using Graphics2D;
 using Helpers;
-
+using DiskWars.parser;
 
 namespace DiskWars
 {
@@ -34,6 +34,9 @@ namespace DiskWars
         FileStream fs;
 
         Vector2[] spawns;
+
+        float querytimer = 0;
+
 
         public GameState(ContentManager content)
         {
@@ -191,6 +194,14 @@ namespace DiskWars
                     large.setEnabled(false);
                 large.setText("Begin!");
 
+            }
+
+            querytimer += gameTime;
+            if (querytimer > Constants.QUERY_TIME)
+            {
+                LinkedList<DWFrame> frames = KnowledgeParser.Map(mapname.Split('/')[1])[4][new PositionSelector()][new PositionSelector()];
+
+                querytimer = 0;
             }
         }
         private void checkEnabled()
