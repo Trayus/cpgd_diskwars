@@ -199,7 +199,19 @@ namespace DiskWars
             querytimer += gameTime;
             if (querytimer > Constants.QUERY_TIME)
             {
-                LinkedList<DWFrame> frames = KnowledgeParser.Map(mapname.Split('/')[1])[4][new PositionSelector()][new PositionSelector()];
+                Vector2[] disks = new Vector2[4];
+                Vector2[] pls = new Vector2[4];
+                int i = 0;
+                foreach (Player p in players)
+                {
+                    disks[i] = p.disk.getPosition();
+                    pls[i] = p.animation.position;
+                    i++;
+                }
+                LinkedList<DWFrame> frames = Game1.kp.Map(mapname.Split('/')[1]).PlayersAlive(4).DiskPositions(disks).PlayerPositions(pls);
+
+                if (frames.Count != 0) 
+                    querytimer = 0;
 
                 querytimer = 0;
             }

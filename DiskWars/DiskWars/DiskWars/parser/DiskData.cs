@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DiskWars.parser
 {
-   struct DiskData
+   public struct DiskData
    {
       public int xPos, 
          yPos;

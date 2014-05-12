@@ -5,11 +5,12 @@ using System.Text;
 
 namespace DiskWars.parser
 {
-   struct PlayerData
+   public struct PlayerData
    {
       public int xPos,
-         yPos,
-         rot;
+         yPos;
+
+      public float rot;
 
       public bool hasDisk,
          hasShield,

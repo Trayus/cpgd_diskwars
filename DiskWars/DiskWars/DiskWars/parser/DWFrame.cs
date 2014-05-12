@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace DiskWars.parser
 {
-   class DWFrame
+   public class DWFrame
    {
       public bool isHead { set; get; }
       public int timeLeft { set; get; }

@@ -26,6 +26,7 @@ namespace DiskWars
         State menu, game, replay, current;
         private static Game1 instance;
         bool tpressed = false;
+        public static KnowledgeParser kp;
 
         public Game1()
         {
@@ -59,8 +60,8 @@ namespace DiskWars
             {
                 this.Components.Add(new RenderingEngine(this, 1920, 1080));
             }
-
-            KnowledgeParser.ParsePlaytest("../../../parser/dw_kb/dw_kb_0-2-46.txt");
+            kp = new KnowledgeParser();
+            kp.ParsePlaytestDirectory("../../../parser/dw_kb");
         }
 
         /// <summary>

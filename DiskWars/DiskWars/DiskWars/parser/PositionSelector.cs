@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace DiskWars.parser
 {
-   class PositionSelector : IEquatable<PositionSelector>
+   public class PositionSelector : IEquatable<PositionSelector>
    {
       private Vector2[] positions;
       private List<int> activeQuadrants;
@@ -47,8 +47,8 @@ namespace DiskWars.parser
 
          foreach (Vector2 pos in positions)
          {
-            row = Convert.ToInt32(pos.Y / vertOffset);
-            col = Convert.ToInt32(pos.X / horizOffset);
+            row = pos.Y > 0 ? Convert.ToInt32(pos.Y / vertOffset) : 0;
+            col = pos.X > 0 ? Convert.ToInt32(pos.X / horizOffset) : 0;
             activeQuadrants.Add((row > 0 ? row : 0) * HORIZ_QUADRANTS + 
                col);
          }
