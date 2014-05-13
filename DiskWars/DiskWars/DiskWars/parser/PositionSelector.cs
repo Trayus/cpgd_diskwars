@@ -62,5 +62,28 @@ namespace DiskWars.parser
          this.positions = positions;
          GenerateQuadrants();
       }
+
+      public class PSComparer : IEqualityComparer<PositionSelector>
+      {
+         public bool Equals(PositionSelector p1, PositionSelector p2)
+         {
+            return p2.activeQuadrants.Count == p1.activeQuadrants.Count &&
+            p2.activeQuadrants.SequenceEqual(p1.activeQuadrants);
+         }
+
+         public int GetHashCode(PositionSelector obj)
+         {
+            int sum = 0;
+
+            foreach (int i in obj.activeQuadrants)
+            {
+               sum += i;
+            }
+
+            return sum;
+         }
+      }
    }
 }
+
+

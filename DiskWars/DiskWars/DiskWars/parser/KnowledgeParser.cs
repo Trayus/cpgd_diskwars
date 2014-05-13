@@ -185,17 +185,17 @@ namespace DiskWars.parser
          currentPlayersAlive = currentFrame.getNumPlayersAlive();
          if (!knowledgeTree[currentMap].ContainsKey(currentPlayersAlive))
          {
-            knowledgeTree[currentMap][currentPlayersAlive] = 
+            knowledgeTree[currentMap][currentPlayersAlive] =
                new Dictionary<PositionSelector,
-                  Dictionary<PositionSelector, 
-                  LinkedList<DWFrame>>>();
+                  Dictionary<PositionSelector,
+                  LinkedList<DWFrame>>>(new PositionSelector.PSComparer());
          }
 
          diskPS = currentFrame.playerQuadrants;
          if (!knowledgeTree[currentMap][currentPlayersAlive].ContainsKey(diskPS))
          {
-            knowledgeTree[currentMap][currentPlayersAlive][diskPS] = new 
-               Dictionary<PositionSelector, LinkedList<DWFrame>>();
+            knowledgeTree[currentMap][currentPlayersAlive][diskPS] = new
+               Dictionary<PositionSelector, LinkedList<DWFrame>>(new PositionSelector.PSComparer());
          }
 
          playerPS = currentFrame.playerQuadrants;

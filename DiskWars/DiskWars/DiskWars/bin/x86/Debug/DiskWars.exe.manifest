@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DiskWars.exe" size="92160">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DiskWars.exe" size="92672">
       <assemblyIdentity name="DiskWars" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>37ycRsnBVDqsOmNeOrmnKysTLXY=</dsig:DigestValue>
+        <dsig:DigestValue>ESv6fsI7IfuWGVxTiXKfTdL9g/w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -131,13 +131,13 @@
       <dsig:DigestValue>eXVElbkNU93AFAuPzghOzxbdZ6s=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\graphics\DeferredCombined.xnb" size="3320">
+  <file name="Content\graphics\DeferredCombined.xnb" size="3332">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>w/06BA78pPmR1gH5sb/bp3epU/g=</dsig:DigestValue>
+      <dsig:DigestValue>lf4jpgwDtZsCj+FNsFuQnhasDkk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\graphics\font.xnb" size="20142">
@@ -149,13 +149,13 @@
       <dsig:DigestValue>VW5q7hvoVSsp/M3t/RXbF8f7h8w=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\graphics\MultiTarget.xnb" size="19224">
+  <file name="Content\graphics\MultiTarget.xnb" size="19288">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>IG9rP/9+hSYndstRmaiN/FG6zgw=</dsig:DigestValue>
+      <dsig:DigestValue>KPqxxjw0VrGUAGsBz0wIxsT+d7w=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\maps\Arena.xnb" size="8867">
@@ -380,7 +380,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>nu8poJjmRbI8jA//QrGK7wwHDEU=</dsig:DigestValue>
+      <dsig:DigestValue>Fi5SMoABtQb0BIyl8ZbUPchDRVQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\sound\4614(2).xnb" size="125">
