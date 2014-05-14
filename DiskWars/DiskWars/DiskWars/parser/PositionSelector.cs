@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace DiskWars.parser
 {
-   public class PositionSelector : IEquatable<PositionSelector>
+   public class PositionSelector
    {
       private Vector2[] positions;
       private List<int> activeQuadrants;
@@ -29,12 +29,6 @@ namespace DiskWars.parser
       public static implicit operator PositionSelector(Vector2[] positions)
       {
          return new PositionSelector(positions);
-      }
-
-      public bool Equals(PositionSelector p2)
-      {
-         return p2.activeQuadrants.Count == this.activeQuadrants.Count &&
-            p2.activeQuadrants.SequenceEqual(this.activeQuadrants);
       }
 
       private void GenerateQuadrants()

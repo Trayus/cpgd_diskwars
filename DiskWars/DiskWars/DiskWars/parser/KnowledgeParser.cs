@@ -191,7 +191,7 @@ namespace DiskWars.parser
                   LinkedList<DWFrame>>>(new PositionSelector.PSComparer());
          }
 
-         diskPS = currentFrame.playerQuadrants;
+         diskPS = currentFrame.diskQuadrants;
          if (!knowledgeTree[currentMap][currentPlayersAlive].ContainsKey(diskPS))
          {
             knowledgeTree[currentMap][currentPlayersAlive][diskPS] = new
@@ -307,7 +307,7 @@ namespace DiskWars.parser
       /// </summary>
       /// <param name="mapName">The name of the map</param>
       /// <returns>Ugly Dictionary. You don't want to use this alone.</returns>
-      public  KnowledgeParser Map(string mapName) 
+      public KnowledgeParser Map(string mapName) 
       {
          currentMap = mapName;
          return this;
@@ -320,7 +320,7 @@ namespace DiskWars.parser
       /// </summary>
       /// <param name="playersAlive">How many players are living?</param>
       /// <returns>Ugly Dictionary. You don't to use this alone.</returns>
-      public  KnowledgeParser PlayersAlive(int playersAlive) 
+      public KnowledgeParser PlayersAlive(int playersAlive) 
       {
          currentPlayersAlive = playersAlive;
          return this;
@@ -333,7 +333,7 @@ namespace DiskWars.parser
       /// </summary>
       /// <param name="positions">The positions of disks, order doesn't matter</param>
       /// <returns>Ugly Dictionary. You don't to use this alone.</returns>
-      public  KnowledgeParser DiskPositions(params Vector2[] positions)
+      public KnowledgeParser DiskPositions(params Vector2[] positions)
       {
          currentDiskPositions = positions;
          return this;
@@ -349,7 +349,7 @@ namespace DiskWars.parser
       /// It can be used to query for more specific information like player positions,
       /// disk positions, and gives access to the frames following it and the 
       /// frames preceding it.</returns>
-      public  LinkedList<DWFrame> PlayerPositions(params Vector2[] positions)
+      public LinkedList<DWFrame> PlayerPositions(params Vector2[] positions)
       {
          currentPlayerPositions = positions;
 
