@@ -22,11 +22,12 @@ namespace DiskWars
         public Animation shieldPUAnimation;
         public Animation piercePUAnimation;
         public Disk disk;
-        Vector2 velocity = Vector2.Zero;
+        Vector2 velocity = Vector2.Zero, target = Vector2.Zero;
         Vector2[] spawn;
         GameState gameState;
         Light playerlight;
         int num;
+        public bool AI = false;
         public bool holdingDisk = true, released = false, reset = false;
         float diskTimer;
         float respawnTimer;
@@ -213,14 +214,91 @@ namespace DiskWars
                         animation.position.Y -= 1080;
                 }
 
-                velocity.X += Input.LSTICKX(num) * gameTime * Constants.ACCELERATION;
+                float lx = Input.LSTICKX(num);
+                float ly = Input.LSTICKY(num);
+                float rx = Input.RSTICKX(num);
+                float ry = Input.RSTICKY(num);
+                bool shooter = (Input.RT(num) > 0.2f || Input.LT(num) > 0.2f);
+
+                if (AI && GameState.current != null)
+                {
+                    Vector2 posto = new Vector2(GameState.current.players[num - 1].xPos, GameState.current.players[num - 1].yPos);
+                    Vector2 movdir = posto - animation.position;
+                    movdir.Normalize();
+                    if (Vector2.Distance(posto, animation.position) < 150)
+                    {
+                        movdir *= Vector2.Distance(posto, animation.position) / 150;
+                    }
+                    lx = movdir.X;
+                    ly = movdir.Y;
+
+                    Vector2 targetloc = Vector2.Zero;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (i + 1 != num && GameState.players[i].alive)
+                        {
+                            if (targetloc == Vector2.Zero)
+                            {
+                                if (Vector2.Distance(GameState.players[i].disk.getPosition(), animation.position) < 300)
+                                {
+                                    targetloc = GameState.players[i].disk.getPosition();
+                                }
+                                if (Vector2.Distance(GameState.players[i].animation.position, animation.position) < 500)
+                                {
+                                    targetloc = GameState.players[i].animation.position;
+                                }
+                            }
+                            else
+                            {
+                                if (Vector2.Distance(GameState.players[i].disk.getPosition(), animation.position) < Vector2.Distance(targetloc, animation.position))
+                                {
+                                    targetloc = GameState.players[i].disk.getPosition();
+                                }
+                                if (Vector2.Distance(GameState.players[i].animation.position, animation.position) < Vector2.Distance(targetloc, animation.position))
+                                {
+                                    targetloc = GameState.players[i].animation.position;
+                                }
+                            }
+                        }
+                    }
+                    target = targetloc;
+
+                    if (GameState.AI_level == GameState.PURE_KB)
+                    {
+                        float rotation = GameState.current.players[num - 1].rot;
+                        rx = (float)Math.Cos(rotation);
+                        ry = (float)Math.Sin(rotation);
+                    }
+                    else
+                    {
+                        Vector2 dir = animation.position - targetloc;
+                        dir.Normalize();
+                        rx = -dir.X;
+                        ry = dir.Y;
+                    }
+                    if (GameState.AI_level != GameState.CUSTOM_SHOOT)
+                    {
+                        shooter = GameState.current.players[num - 1].hasDisk;
+                    }
+                    else
+                    {
+                        if (Vector2.Distance(animation.position, targetloc) < 250)
+                            shooter = true;
+                        else
+                            shooter = false;
+                        if (Vector2.Distance(animation.position, targetloc) > 500)
+                            shooter = false;
+                    }
+                }
+
+                velocity.X += lx * gameTime * Constants.ACCELERATION;
                 if (Math.Abs(velocity.X) > Constants.MAXVELOCITY) velocity.X = Constants.MAXVELOCITY * Math.Sign(velocity.X);
-                velocity.Y -= Input.LSTICKY(num) * gameTime * Constants.ACCELERATION;
+                velocity.Y -= ly * gameTime * Constants.ACCELERATION;
                 if (Math.Abs(velocity.Y) > Constants.MAXVELOCITY) velocity.Y = Constants.MAXVELOCITY * Math.Sign(velocity.Y);
 
-                if (Input.LSTICKX(num) < 0.1f && Input.LSTICKX(num) > -0.1f || velocity.X > 0 && Input.LSTICKX(num) > -0.1f || velocity.X < 0 && Input.LSTICKX(num) < -0.1f)
+                if (lx < 0.1f && lx > -0.1f || velocity.X > 0 && lx > -0.1f || velocity.X < 0 && lx < -0.1f)
                     velocity.X /= Constants.SLIDE;
-                if (Input.LSTICKY(num) < 0.1f && Input.LSTICKY(num) > -0.1f || velocity.Y < 0 && Input.LSTICKY(num) > -0.1f || velocity.Y > 0 && Input.LSTICKY(num) < -0.1f)
+                if (ly < 0.1f && ly > -0.1f || velocity.Y < 0 && ly > -0.1f || velocity.Y > 0 && ly < -0.1f)
                     velocity.Y /= Constants.SLIDE;
 
                 animation.position += velocity * gameTime * Constants.VELOCITY;
@@ -229,9 +307,9 @@ namespace DiskWars
 
                 playerlight.position = animation.position;
                 
-                if (Math.Abs(Input.RSTICKX(num)) > 0.05f || Math.Abs(Input.RSTICKY(num)) > 0.05f)
+                if (Math.Abs(rx) > 0.05f || Math.Abs(ry) > 0.05f)
                 {
-                    Vector2 dir = new Vector2(Input.RSTICKX(num), Input.RSTICKY(num));
+                    Vector2 dir = new Vector2(rx, ry);
                     //dir.Normalize();
 
                     animation.setRotation((float)(Math.Atan2(-dir.Y, dir.X)) - (float)Math.PI / 2);
@@ -248,9 +326,9 @@ namespace DiskWars
                     disk.stopped = false;
                     SoundManager.PlaySound("sound/dw_grab");
                 }
-                if (holdingDisk && !reset && (Input.RT(num) < 0.2f && Input.LT(num) < 0.2f))
+                if (holdingDisk && !reset && !shooter)
                     reset = true;
-                if ((Input.RT(num) > 0.2f || Input.LT(num) > 0.2f) && holdingDisk && reset)
+                if (shooter && holdingDisk && reset)
                 {
                     holdingDisk = false;
                     disk.setVelocity(new Vector2((float)Math.Cos(animation.getRotation() + (float)Math.PI / 2), (float)Math.Sin(animation.getRotation() + (float)Math.PI / 2)));
@@ -259,7 +337,7 @@ namespace DiskWars
                     reset = false;
                     SoundManager.PlaySound("sound/dw_shoot");
                 }
-                if ((Input.RT(num) < 0.2f && Input.LT(num) < 0.2f) && !holdingDisk && diskTimer <= 0)
+                if (!shooter && !holdingDisk && diskTimer <= 0)
                     released = true;
                 if (released)
                     disk.retrieve(animation.position);

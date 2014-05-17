@@ -20,13 +20,15 @@ namespace DiskWars
     class GameState : State
     {
         public static String mapname = "initialized from menu state";
+        public static int AI_level = 0;
+        public const int PURE_KB = 0, CUSTOM_AIM = 1, CUSTOM_SHOOT = 2;
         private SpriteFont customfont, customfont2;
         ContentManager content;
 
         float timer;
-        HUDText time;
+        HUDText time, ai_data;
         Map map;
-        Player[] players;
+        public static Player[] players;
         HUDText[] scores;
         HUDText large;
         bool[] toggles;
@@ -36,7 +38,8 @@ namespace DiskWars
         Vector2[] spawns;
 
         float querytimer = 0;
-
+        DWFrame start;
+        public static DWFrame current;
 
         public GameState(ContentManager content)
         {
@@ -62,6 +65,19 @@ namespace DiskWars
             else if (timer < Constants.TIMEMILLIS && timer > 0)
             {
                 writeString("t = " + timer + " " + players[0].score + " " + players[1].score + " " + players[2].score + " " + players[3].score);
+
+                if (OnceInput.ENTER())
+                {
+                    AI_level++;
+                    AI_level %= 3;
+                }
+
+                switch (AI_level)
+                {
+                    case PURE_KB: ai_data.setText("Agents only use KB"); break;
+                    case CUSTOM_AIM: ai_data.setText("Agents use hard-coded aiming"); break;
+                    case CUSTOM_SHOOT: ai_data.setText("Agents use hard-coded aiming and shooting"); break;
+                }
 
                 // game logic 
                 for (int i = 0; i < 4; i++)
@@ -89,7 +105,7 @@ namespace DiskWars
                                 }
                             }
                         }
-                        scores[i].setText(players[i].score + " ");
+                        scores[i].setText(players[i].score + " " + (players[i].AI? "(AI)" : ""));
                     }
                 }
                 // check for respawning destructible tiles
@@ -196,23 +212,39 @@ namespace DiskWars
 
             }
 
+            if (current != null)
+                current = current.nextFrame;
+
             querytimer += gameTime;
-            if (querytimer > Constants.QUERY_TIME)
+            if (querytimer > Constants.QUERY_TIME || current == null)
             {
                 Vector2[] disks = new Vector2[4];
                 Vector2[] pls = new Vector2[4];
-                int i = 0;
+                int i = 0, a = 0;
                 foreach (Player p in players)
                 {
                     disks[i] = p.disk.getPosition();
                     pls[i] = p.animation.position;
                     i++;
+                    if (p.alive) a++;
                 }
-                LinkedList<DWFrame> frames = Game1.kp.Map(mapname.Split('/')[1]).PlayersAlive(4).DiskPositions(disks).PlayerPositions(pls);
+                LinkedList<DWFrame> frames = Game1.kp.Map(mapname.Split('/')[1]).PlayersAlive(a).DiskPositions(disks).PlayerPositions(pls);
 
-                if (frames.Count != 0) 
-                    querytimer = 0;
-
+                if (frames.Count > 0)
+                {
+                    start = null;
+                    foreach (DWFrame fr in frames)
+                    {
+                        if (Rand.Float() > 0.8f)
+                        {
+                            start = fr;
+                            break;
+                        }
+                    }
+                    if (start == null)
+                        start = frames.First.Value;
+                    current = start;
+                }
                 querytimer = 0;
             }
         }
@@ -233,7 +265,12 @@ namespace DiskWars
                 toggles[0] = true;
                 players[0].score = 0;
             }
-            if (!Keyboard.GetState().IsKeyDown(Keys.F1) && toggles[0]) toggles[0] = false;
+            if (Keyboard.GetState().IsKeyDown(Keys.F9) && !toggles[0])
+            {
+                players[0].AI = !players[0].AI;
+                toggles[0] = true;
+            }
+            if (!(Keyboard.GetState().IsKeyDown(Keys.F1) || Keyboard.GetState().IsKeyDown(Keys.F9)) && toggles[0]) toggles[0] = false;
 
             if (Keyboard.GetState().IsKeyDown(Keys.F2) && !toggles[1])
             {
@@ -250,7 +287,12 @@ namespace DiskWars
                 toggles[1] = true;
                 players[1].score = 0;
             }
-            if (!Keyboard.GetState().IsKeyDown(Keys.F2) && toggles[1]) toggles[1] = false;
+            if (Keyboard.GetState().IsKeyDown(Keys.F10) && !toggles[1])
+            {
+                players[1].AI = !players[1].AI;
+                toggles[1] = true;
+            }
+            if (!(Keyboard.GetState().IsKeyDown(Keys.F2) || Keyboard.GetState().IsKeyDown(Keys.F10)) && toggles[1]) toggles[1] = false;
 
             if (Keyboard.GetState().IsKeyDown(Keys.F3) && !toggles[2])
             {
@@ -267,7 +309,12 @@ namespace DiskWars
                 toggles[2] = true;
                 players[2].score = 0;
             }
-            if (!Keyboard.GetState().IsKeyDown(Keys.F3) && toggles[2]) toggles[2] = false;
+            if (Keyboard.GetState().IsKeyDown(Keys.F11) && !toggles[2])
+            {
+                players[2].AI = !players[2].AI;
+                toggles[2] = true;
+            }
+            if (!(Keyboard.GetState().IsKeyDown(Keys.F3) || Keyboard.GetState().IsKeyDown(Keys.F11)) && toggles[2]) toggles[2] = false;
 
             if (Keyboard.GetState().IsKeyDown(Keys.F4) && !toggles[3])
             {
@@ -284,7 +331,12 @@ namespace DiskWars
                 toggles[3] = true;
                 players[3].score = 0;
             }
-            if (!Keyboard.GetState().IsKeyDown(Keys.F4) && toggles[3]) toggles[3] = false;
+            if (Keyboard.GetState().IsKeyDown(Keys.F12) && !toggles[3])
+            {
+                players[3].AI = !players[3].AI;
+                toggles[3] = true;
+            }
+            if (!(Keyboard.GetState().IsKeyDown(Keys.F4) || Keyboard.GetState().IsKeyDown(Keys.F12)) && toggles[3]) toggles[3] = false;
         }
 
         public override void enterState()
@@ -294,6 +346,7 @@ namespace DiskWars
             RenderingEngine.camera.setPosition(new Vector2(1920 / 2, 1080 / 2));
             RenderingEngine.ambientLight = Color.Gray;
 
+            RenderingEngine.UI.addText(ai_data = new HUDText("AI Level", new Vector2(1250, 20), customfont, Color.White));
             RenderingEngine.UI.addText(time = new HUDText("Timer", new Vector2(50, 20), customfont, Color.White));
             timer = Constants.TIMEINTRO + Constants.TIMEMILLIS;
 
@@ -309,11 +362,11 @@ namespace DiskWars
             for (int i = 0; i < 4; i++)
             {
                 players[i] = new Player(map.spawns, i + 1, this);
-                scores[i] = new HUDText("0", new Vector2(500 + i * 100, 20), customfont, (i == 0 ? Color.Red : (i == 1 ? Color.Yellow : (i == 2 ? Color.LightGreen : Color.Blue))));
+                scores[i] = new HUDText("0", new Vector2(500 + i * 140, 20), customfont, (i == 0 ? Color.Red : (i == 1 ? Color.Yellow : (i == 2 ? Color.LightGreen : Color.Blue))));
                 RenderingEngine.UI.addText(scores[i]);
                 toggles[i] = false;
             }
-            SoundManager.PlayMusicLooped("sound/4614(2)");
+            //SoundManager.PlayMusicLooped("sound/4614(2)");
 
             fs = File.Open("dw_kb_" + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
             writeString(mapname);

@@ -113,12 +113,12 @@ namespace DiskWars
 
             current.update(gameTime.ElapsedGameTime.Milliseconds);
 
-            if (Keyboard.GetState().IsKeyDown(Keys.F12) && !tpressed)
+            if (Keyboard.GetState().IsKeyDown(Keys.F7) && !tpressed)
             {
                 RenderingEngine.useLights = !RenderingEngine.useLights;
                 tpressed = true;
             }
-            if (!Keyboard.GetState().IsKeyDown(Keys.F12))
+            if (!Keyboard.GetState().IsKeyDown(Keys.F7))
                 tpressed = false;
 
             base.Update(gameTime);
